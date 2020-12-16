@@ -54,7 +54,7 @@ public class BookReturnPanel extends JPanel {
 				bookNameTextField.setText("");
 
 				Vector<Vector<String>> data = DBUtils.getAllBorrowedBookInfos(ReaderEntrance.readerNumber);
-				table.setModel(new BookBorrowedTableModel(data));
+				table.setModel(new NewspaperBorrowedTableModel(data));
 			}
 		});
 		refreshButton.setBounds(333, 33, 93, 23);
@@ -83,14 +83,14 @@ public class BookReturnPanel extends JPanel {
 					}
 				}
 				Vector<Vector<String>> data = DBUtils.getAllBorrowedBookInfos(ReaderEntrance.readerNumber);
-				table.setModel(new BookBorrowedTableModel(data));
+				table.setModel(new NewspaperBorrowedTableModel(data));
 			}
 		});
 		borrowButton.setBounds(438, 33, 93, 23);
 		add(borrowButton);
 
 		table = new JTable();
-		table.setModel(new BookBorrowedTableModel(ReaderEntrance.readerNumber));
+		table.setModel(new NewspaperBorrowedTableModel(ReaderEntrance.readerNumber));
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 79, 521, 211);
 		add(scrollPane);
@@ -98,6 +98,6 @@ public class BookReturnPanel extends JPanel {
 	}
 
 	public void refresh() {
-		table.setModel(new BookBorrowedTableModel(ReaderEntrance.readerNumber));
+		table.setModel(new NewspaperBorrowedTableModel(ReaderEntrance.readerNumber));
 	}
 }

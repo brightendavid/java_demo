@@ -1,4 +1,4 @@
-package reader;
+package reader;//reader界面
 
 import java.awt.Color;
 import java.awt.Font;
@@ -23,7 +23,7 @@ public class ReaderInfoPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ReaderInfoPanel() {
+	public ReaderInfoPanel() {//此处全部是图形化界面的搭建和响应器
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		int number = ReaderEntrance.readerNumber;
@@ -32,7 +32,7 @@ public class ReaderInfoPanel extends JPanel {
 
 		setLayout(null);
 
-		JLabel titleLabel = new JLabel("欢迎进入读者借阅管理系统");
+		JLabel titleLabel = new JLabel("邮局报刊订阅");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setFont(new Font("微软雅黑", Font.PLAIN, 25));
 		titleLabel.setBounds(111, 23, 319, 40);
@@ -105,7 +105,7 @@ public class ReaderInfoPanel extends JPanel {
 			}
 		});
 		infoModifyButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		infoModifyButton.setBounds(88, 233, 162, 50);
+		infoModifyButton.setBounds(50, 233, 162, 50);
 		add(infoModifyButton);
 
 		JButton passwordModifyButton = new JButton("修改密码");
@@ -115,7 +115,7 @@ public class ReaderInfoPanel extends JPanel {
 			}
 		});
 		passwordModifyButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		passwordModifyButton.setBounds(338, 233, 114, 50);
+		passwordModifyButton.setBounds(308, 233, 114, 50);
 		add(passwordModifyButton);
 
 	}

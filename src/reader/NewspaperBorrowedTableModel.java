@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 
 import utils.DBUtils;
 
-public class BookBorrowedTableModel extends AbstractTableModel {
+public class NewspaperBorrowedTableModel extends AbstractTableModel {
 
 	private static String[] columnName = { "书名", "书号", "作者", "出版社", "出版时间", "借阅时间" };
 	private static Vector<Vector<String>> data;
@@ -31,11 +31,11 @@ public class BookBorrowedTableModel extends AbstractTableModel {
 		return columnName[column];
 	}
 
-	public BookBorrowedTableModel(Vector<Vector<String>> data) {
-		BookBorrowedTableModel.data = data;
+	public NewspaperBorrowedTableModel(Vector<Vector<String>> data) {
+		NewspaperBorrowedTableModel.data = data;
 	}
 
-	public BookBorrowedTableModel(int number) {
+	public NewspaperBorrowedTableModel(int number) {
 		data = DBUtils.getAllBorrowedBookInfos(number);
 	}
 }

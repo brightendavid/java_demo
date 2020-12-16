@@ -1,8 +1,10 @@
 package main;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import com.sun.prism.paint.Color;
+
+import Administrator.managerEntrance;
 import reader.ReaderEntrance;
 
 import java.awt.event.ActionListener;
@@ -41,38 +46,56 @@ public class LibraryManagerSystem {
 	 * Create the application.
 	 */
 	public LibraryManagerSystem() {
-		initialize();
+		initialize();//调用界面设计
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+//界面设计开始界面
+		frame = new JFrame("浙江工商大学图书馆管理系统");//窗口
+		frame.setBounds(200, 200, 450, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+//图片
+		ImageIcon image = new ImageIcon("E:\\OneDrive\\图片\\示例.jpg");
+		JLabel Limage = new JLabel(image);
+		frame.add(Limage,java.awt.BorderLayout.NORTH);//上部图片部分
+		
+		
 		contentPanel = new JPanel();
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		contentPanel.setLayout(null);
-		frame.setContentPane(contentPanel);
+//		frame.setContentPane(contentPanel);
 
-		JLabel titleLabel = new JLabel("浙江工商大学图书馆管理系统");
+	//	JLabel titleLabel = new JLabel("浙江工商大学图书馆管理系统");
+		 JLabel titleLabel = new JLabel("浙江工商大学图书馆管理系统");
+	     Font font=new Font("Monospaced",Font.BOLD,32);//设置字体格式和大小
+	     titleLabel.setFont(font);
+		//"<font color='red' size='24'>浙江工商大学图书馆管理系统</font>"
+		 /*JLabel label = new JLabel("文字");
+	        Font font=new Font("Monospaced",Font.BOLD,32);//设置字体格式和大小
+	        label.setForeground(Color.RED);//设置前景色*/
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setFont(new Font("微软雅黑", Font.PLAIN, 25));
 		titleLabel.setBounds(53, 24, 329, 50);
 		contentPanel.add(titleLabel);
-
+//管理员
 		JButton managerButton = new JButton("管理员入口");
 		managerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
+				//新建 管理员
+				frame.dispose();
+				new managerEntrance();//新建manager类
 			}
 		});
 		managerButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		managerButton.setBounds(118, 101, 200, 50);
+		managerButton.setBounds(150, 100, 200, 50);
 		contentPanel.add(managerButton);
-
+		
+		
+//读者
 		JButton readerButton = new JButton("读者入口");
 		readerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,8 +104,12 @@ public class LibraryManagerSystem {
 			}
 		});
 		readerButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		readerButton.setBounds(118, 178, 200, 50);
+		readerButton.setBounds(150, 200, 200, 50);
 		contentPanel.add(readerButton);
+		
+		
+		
+		frame.add(contentPanel,BorderLayout.CENTER);
 	}
 
 }

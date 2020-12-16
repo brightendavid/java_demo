@@ -16,7 +16,7 @@ public class DBUtils {
 		try {
 			conn = JDBCUtils.getConnection();
 
-			String sql = "select number, password from reader where number = ? and password = ?";
+			String sql = "select number, password from reader where number = ? and   password = ? ";
 			st = conn.prepareStatement(sql);
 			st.setInt(1, number);
 			st.setString(2, password);
@@ -33,7 +33,32 @@ public class DBUtils {
 		}
 		return false;
 	}
+//new Adminenter 入口
+	public static boolean verifyAdmin(int number, String password,String name) {
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			conn = JDBCUtils.getConnection();
 
+			String sql = "select number, password ,name from admin where number = ? and password = ?";
+			//表示数据库插叙格式
+			st = conn.prepareStatement(sql);
+			st.setInt(1, number);
+			st.setString(2, password);
+			rs = st.executeQuery();
+			rs.last();
+			if (rs.getRow() > 0)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+		return false;
+	}
+	
 	public static Map<String, Object> getStudentInfo(int number) {
 		Connection conn = null;
 		PreparedStatement st = null;

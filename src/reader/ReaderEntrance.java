@@ -43,7 +43,7 @@ public class ReaderEntrance {
 		contentPane.setLayout(null);
 		frame.setContentPane(contentPane);
 
-		JLabel numberLabel = new JLabel("学号：");
+		JLabel numberLabel = new JLabel("电话：");
 		numberLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		numberLabel.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		numberLabel.setBounds(91, 35, 60, 40);
@@ -59,34 +59,39 @@ public class ReaderEntrance {
 		passwordLabel.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		passwordLabel.setBounds(91, 110, 60, 40);
 		contentPane.add(passwordLabel);
-
+		
+		
 		passwordTextField = new JPasswordField();
 		passwordTextField.setColumns(10);
 		passwordTextField.setBounds(193, 110, 180, 40);
 		contentPane.add(passwordTextField);
+		
 
+		
 		registerButton = new JButton("注册");
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ReaderRegister();
+				new ReaderRegister();//register()类，注册界面
 			}
 		});
 		registerButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		registerButton.setBounds(65, 185, 120, 40);
 		contentPane.add(registerButton);
 
+		
+//登录，很奇怪是如何检验的，和数据库对准
 		loginButton = new JButton("登录");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String numberStr = numberTextField.getText().trim();
-				String password = String.valueOf(passwordTextField.getPassword());
+				String password = String.valueOf(passwordTextField.getPassword());//传参
 				if (password.equals("") || numberStr.equals("")) {
 					JOptionPane.showMessageDialog(null, "请输入学号和密码", "通知", JOptionPane.INFORMATION_MESSAGE);
 					System.out.println("---empty number or password!---");
 					return;
 				}
 				int number = 0;
-				try {
+				try {//报错功能
 					number = Integer.parseInt(numberStr);
 					readerNumber = number;
 				} catch (NumberFormatException ex) {
@@ -106,6 +111,7 @@ public class ReaderEntrance {
 
 			}
 		});
+		
 		loginButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		loginButton.setBounds(250, 185, 120, 40);
 		contentPane.add(loginButton);

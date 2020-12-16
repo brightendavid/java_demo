@@ -1,4 +1,4 @@
-package reader;
+package reader;//注册reader
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -88,7 +88,7 @@ public class ReaderRegister {
 
 		JLabel emailLabel = new JLabel("邮箱：");
 		emailLabel.setBounds(82, 225, 54, 15);
-		contentPane.add(emailLabel);
+		contentPane.add(emailLabel);//把JLable  emailLable  放入界面
 
 		emailTextField = new JTextField();
 		emailTextField.setColumns(10);
@@ -124,7 +124,7 @@ public class ReaderRegister {
 				String email = emailTextField.getText();
 				String password = passwordField.getText();
 				String verifyPassword = verifyPasswordField.getText();
-
+//输入合规性检验
 				if (name.equals("") || number.equals("")) {
 					JOptionPane.showMessageDialog(null, "姓名和学号必填，请继续输入", "提示", JOptionPane.INFORMATION_MESSAGE);
 					return;

@@ -1,5 +1,6 @@
-package reader;
+package User;
 
+mport java.awt.event.ActionEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -14,14 +15,14 @@ import javax.swing.JTextField;
 
 import utils.DBUtils;
 
-public class BookBorrowPanel extends JPanel {
+public class NewspaperReturnPanel extends JPanel {
 	private JTextField bookNameTextField;
 	private JTable table;
 
 	/**
 	 * Create the panel.
 	 */
-	public BookBorrowPanel() {
+	public NewspaperReturnPanel() {
 		setLayout(null);
 
 		bookNameTextField = new JTextField();
@@ -29,7 +30,7 @@ public class BookBorrowPanel extends JPanel {
 		add(bookNameTextField);
 		bookNameTextField.setColumns(10);
 
-		JLabel bookNameLabel = new JLabel("请输入书名：");
+		JLabel bookNameLabel = new JLabel("请输入报刊名：");
 		bookNameLabel.setBounds(10, 37, 78, 15);
 		add(bookNameLabel);
 
@@ -41,7 +42,7 @@ public class BookBorrowPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "请输入书名或书名一部分", "提示", JOptionPane.PLAIN_MESSAGE);
 					return;
 				}
-				Vector<Vector<String>> data = DBUtils.getBookInfo(bookName);
+				Vector<Vector<String>> data = DBUtils.getBorrowedBookInfos(ReaderEntrance.readerNumber, bookName);
 				table.setModel(new BookTableModel(data));
 			}
 		});
@@ -53,14 +54,14 @@ public class BookBorrowPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				bookNameTextField.setText("");
 
-				Vector<Vector<String>> data = DBUtils.getAllBookInfos();
-				table.setModel(new BookTableModel(data));
+				Vector<Vector<String>> data = DBUtils.getAllBorrowedBookInfos(ReaderEntrance.readerNumber);
+				table.setModel(new NewspaperBorrowedTableModel(data));
 			}
 		});
 		refreshButton.setBounds(333, 33, 93, 23);
 		add(refreshButton);
 
-		JButton borrowButton = new JButton("借阅");
+		JButton borrowButton = new JButton("归还");
 		borrowButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int rowNum = table.getSelectedRow();
@@ -68,39 +69,29 @@ public class BookBorrowPanel extends JPanel {
 				if (rowNum < 0 || rowNum > table.getRowCount()) {
 					JOptionPane.showMessageDialog(null, "未选中", "提示", JOptionPane.PLAIN_MESSAGE);
 				} else {
-					int n = JOptionPane.showConfirmDialog(null, "确认借阅吗?", "提示", JOptionPane.YES_NO_OPTION);
+					int n = JOptionPane.showConfirmDialog(null, "确认归还吗?", "提示", JOptionPane.YES_NO_OPTION);
 					if (n == JOptionPane.YES_OPTION) {
 						String isbn = (String) table.getValueAt(rowNum, 1);
-						String remain = (String) table.getValueAt(rowNum, 6);
-						if (remain.equals("0")) {
-							JOptionPane.showMessageDialog(null, "当前书籍已全部借出", "提示", JOptionPane.PLAIN_MESSAGE);
-						} else {
-							if (DBUtils.verifyBorrow(readerNumber, isbn)) {
-								JOptionPane.showMessageDialog(null, "借阅失败，已借阅该书", "提示", JOptionPane.PLAIN_MESSAGE);
-								return;
-							}
 
-							if (!DBUtils.borrowOneBook(readerNumber, isbn)) {
-								JOptionPane.showMessageDialog(null, "借阅失败", "提示", JOptionPane.PLAIN_MESSAGE);
-								return;
-							}
-							JOptionPane.showMessageDialog(null, "借阅成功", "提示", JOptionPane.PLAIN_MESSAGE);
-
+						if (!DBUtils.returnOneBook(readerNumber, isbn)) {
+							JOptionPane.showMessageDialog(null, "归还失败", "提示", JOptionPane.PLAIN_MESSAGE);
+							return;
 						}
+						JOptionPane.showMessageDialog(null, "归还成功", "提示", JOptionPane.PLAIN_MESSAGE);
 
 					} else if (n == JOptionPane.NO_OPTION) {
 						return;
 					}
 				}
-				Vector<Vector<String>> data = DBUtils.getAllBookInfos();
-				table.setModel(new BookTableModel(data));
+				Vector<Vector<String>> data = DBUtils.getAllBorrowedBookInfos(ReaderEntrance.readerNumber);
+				table.setModel(new NewspaperBorrowedTableModel(data));
 			}
 		});
 		borrowButton.setBounds(438, 33, 93, 23);
 		add(borrowButton);
 
 		table = new JTable();
-		table.setModel(new BookTableModel());
+		table.setModel(new NewspaperBorrowedTableModel(ReaderEntrance.readerNumber));
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 79, 521, 211);
 		add(scrollPane);
@@ -108,6 +99,6 @@ public class BookBorrowPanel extends JPanel {
 	}
 
 	public void refresh() {
-		table.setModel(new BookTableModel());
+		table.setModel(new BookBorrowedTableModel(ReaderEntrance.readerNumber));
 	}
 }

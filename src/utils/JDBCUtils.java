@@ -1,4 +1,4 @@
-package utils;
+package utils;//Java 连接 MySQL 需要驱动包在lib目录
 
 import java.io.IOException;
 import java.io.InputStream;
