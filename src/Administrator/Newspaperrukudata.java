@@ -114,12 +114,12 @@ public class Newspaperrukudata {
 					}
 					
 
-					if (DBUtils.checkReaderNumber(nameInt)) {
+					if (DBUtils.checkNews_Number(nameInt)) {
 						JOptionPane.showMessageDialog(null, "该报刊已存在，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
 						nameTextField.setText("");
 						return;
 					}
-					if (DBUtils.registerReader( name, press, PubTime,  total, price)) {
+					if (DBUtils.registerNEWS( name, press, PubTime,  total, price)) {
 						JOptionPane.showMessageDialog(null, "添加成功！", "通知", JOptionPane.INFORMATION_MESSAGE);
 						frame.dispose();
 					} else {

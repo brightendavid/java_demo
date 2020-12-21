@@ -189,7 +189,31 @@ public class DBUtils {
 		}
 		return false;
 	}
+	
+	//new 在Newspaper导入时候使用的方法 报刊入库
+	public static boolean checkNews_Number(String name) {  //判断报刊是否存在,合理性
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			conn = JDBCUtils.getConnection();
 
+			String sql = "select name from reader where name  = ?";
+			st = conn.prepareStatement(sql);
+			st.setString(1, name);
+
+			rs = st.executeQuery();
+			rs.last();
+			if (rs.getRow() > 0)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+		return false;
+	}
 	public static boolean registerReader(int number, String name, String sex, String email, String telephone,
 			String age, String password, String verifyPassword) {
 		Connection conn = null;
@@ -219,7 +243,36 @@ public class DBUtils {
 			JDBCUtils.release(conn, st, rs);
 		}
 	}
+	//新建方法  添加数据News_paper
+	public static boolean registerNEWS(String  name,String press,String PubTime,String  total,String price) {
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
 
+		try {
+			conn = JDBCUtils.getConnection();
+
+			String sql = "insert into reader( name, press, PubTime,  total, price) "
+					+ "values (?,		 ?,	   ?,   ?,     ?)";
+			st = conn.prepareStatement(sql);
+			st.setString(1, name);
+			st.setString(2, press);
+			st.setString(3, PubTime);
+			st.setString(4, total);
+			st.setString(5, price);
+
+			int result = st.executeUpdate();
+			return result != 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
+	
+	
+	
 	public static Vector<Vector<String>> getAllBookInfos() {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -251,7 +304,7 @@ public class DBUtils {
 		}
 	}
 
-	public static Vector<Vector<String>> getBookInfo(String bookName) {
+	public static Vector<Vector<String>> getBookInfo(String bookName) {//查询书名
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;

@@ -1,5 +1,5 @@
 
-package reader;//½èÔÄ
+package reader;//½èÔÄ±í¸ñµÄpanel
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
