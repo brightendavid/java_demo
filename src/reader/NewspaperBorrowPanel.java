@@ -43,7 +43,7 @@ public class NewspaperBorrowPanel extends JPanel {
 					return;
 				}
 				Vector<Vector<String>> data = DBUtils.getBookInfo(bookName);
-				table.setModel(new BookTableModel(data));
+				table.setModel(new BookTableModel(data));    //¥Ú”°±Ì∏Ò
 			}
 		});
 		queryButton.setBounds(218, 33, 93, 23);

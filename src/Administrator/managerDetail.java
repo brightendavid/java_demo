@@ -12,6 +12,8 @@ import javax.swing.border.EmptyBorder;
 import reader.NewspaperBorrowPanel;
 import reader.ReaderEntrance;
 import reader.ReaderInfoPanel;
+import reader.ReaderRegister;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 
@@ -24,9 +26,7 @@ public class managerDetail {
 	//private BookReturnPanel bookReturnPanel;
 	private JButton bookBorrowButton;
 	private JButton returnButton;
-	private JButton bookReturnButton;
 	private JButton reloginButton;
-	
 	public managerDetail() {
 	frmManagerdetail = new JFrame();
 	frmManagerdetail.setTitle("managerDetail");
@@ -78,6 +78,7 @@ public class managerDetail {
 	returnButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			contentPane.remove(bookBorrowPanel);
+			contentPane.remove(newspaperruku);
 		//	contentPane.remove(bookReturnPanel);
 			contentPane.add(managerInfoPanel);
 			contentPane.repaint();
@@ -115,11 +116,8 @@ public class managerDetail {
 	JButton button = new JButton("报刊入库管理");
 	button.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			contentPane.remove(managerInfoPanel);
-			//	contentPane.remove(bookReturnPanel);
-				bookBorrowPanel.refresh();
-				contentPane.add(newspaperruku);
-				contentPane.repaint();
+			new Newspaperrukudata();//Ruku类，加入界面
+				
 		}
 	});
 	button.setBounds(150, 323, 134, 47);
@@ -133,7 +131,16 @@ public class managerDetail {
 	button_2.setBounds(298, 394, 275, 27);
 	contentPane.add(button_2);
 	
-	JButton button_3 = new JButton("报刊发放管理");
+	JButton button_3 = new JButton("报刊发放管理");//需要改为发放有关的字段
+	button_3.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			contentPane.remove(managerInfoPanel);
+		//	contentPane.remove(bookReturnPanel);
+			bookBorrowPanel.refresh();
+			contentPane.add(bookBorrowPanel);
+			contentPane.repaint();
+		}
+	});
 	button_3.setBounds(318, 434, 255, 37);
 	contentPane.add(button_3);
 	contentPane.repaint();

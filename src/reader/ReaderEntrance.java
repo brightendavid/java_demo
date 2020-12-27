@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Administrator.managerEntrance;
 import utils.DBUtils;
 
 public class ReaderEntrance {
@@ -33,7 +34,7 @@ public class ReaderEntrance {
 	 */
 	public ReaderEntrance() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 568, 319);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,7 +76,7 @@ public class ReaderEntrance {
 			}
 		});
 		registerButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		registerButton.setBounds(65, 185, 120, 40);
+		registerButton.setBounds(14, 185, 120, 40);
 		contentPane.add(registerButton);
 
 		
@@ -112,8 +113,19 @@ public class ReaderEntrance {
 			}
 		});
 		
+		JButton btnNewButton = new JButton("ÌøÔ¾µ½Maganager");
+		btnNewButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				new managerEntrance();
+			}
+		});
+		btnNewButton.setBounds(289, 185, 226, 40);
+		contentPane.add(btnNewButton);
+		
 		loginButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		loginButton.setBounds(250, 185, 120, 40);
+		loginButton.setBounds(166, 185, 120, 40);
 		contentPane.add(loginButton);
 		frame.getRootPane().setDefaultButton(loginButton);
 	}

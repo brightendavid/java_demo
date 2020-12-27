@@ -15,7 +15,7 @@ public class ReaderDetail {
 	private JPanel contentPane;
 	private ReaderInfoPanel readerInfoPanel;
 	private NewspaperBorrowPanel bookBorrowPanel;
-	//private BookReturnPanel bookReturnPanel;
+	private BookReturnPanel bookReturnPanel;
 	private JButton bookBorrowButton;
 	private JButton returnButton;
 	private JButton bookReturnButton;
@@ -38,9 +38,9 @@ public class ReaderDetail {
 		bookBorrowPanel.setSize(540, 300);
 		bookBorrowPanel.setLocation(10, 10);
 
-	/*	bookReturnPanel = new BookReturnPanel();
+		bookReturnPanel = new BookReturnPanel();
 		bookReturnPanel.setSize(540, 300);
-		bookReturnPanel.setLocation(10, 10);*/
+		bookReturnPanel.setLocation(10, 10);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,7 +53,7 @@ public class ReaderDetail {
 		bookBorrowButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.remove(readerInfoPanel);
-			//	contentPane.remove(bookReturnPanel);
+				contentPane.remove(bookReturnPanel);
 				bookBorrowPanel.refresh();
 				contentPane.add(bookBorrowPanel);
 				contentPane.repaint();
@@ -68,7 +68,7 @@ public class ReaderDetail {
 		returnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.remove(bookBorrowPanel);
-			//	contentPane.remove(bookReturnPanel);
+				contentPane.remove(bookReturnPanel);
 				contentPane.add(readerInfoPanel);
 				contentPane.repaint();
 			}
@@ -76,8 +76,8 @@ public class ReaderDetail {
 		returnButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		returnButton.setBounds(288, 320, 120, 50);
 		contentPane.add(returnButton);
-//此处是邮局管理系统不需要使用的功能
-		/*bookReturnButton = new JButton("图书归还");
+//此处是邮局管理系统不需要使用的功能  ，我觉得还是需要的，表示报刊退订
+		bookReturnButton = new JButton("图书归还");
 		bookReturnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.remove(bookBorrowPanel);
@@ -89,7 +89,7 @@ public class ReaderDetail {
 		});
 		bookReturnButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		bookReturnButton.setBounds(152, 320, 120, 50);
-		contentPane.add(bookReturnButton);*/
+		contentPane.add(bookReturnButton);
 
 		reloginButton = new JButton("返回登录");
 		reloginButton.addActionListener(new ActionListener() {

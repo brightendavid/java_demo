@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 import utils.DBUtils;
 
 public class Newspaperrukudata {
-	public class ReaderRegister {
+
 
 		private JFrame frame;
 		private JPanel contentPane;
@@ -30,10 +30,10 @@ public class Newspaperrukudata {
 		/**
 		 * Create the frame.
 		 */
-		public ReaderRegister() {
+		public Newspaperrukudata() {
 			frame = new JFrame();
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setBounds(100, 100, 418, 431);
+			frame.setBounds(100, 100, 487, 451);
 			frame.setVisible(true);
 			contentPane = new JPanel();
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -41,7 +41,7 @@ public class Newspaperrukudata {
 			frame.setContentPane(contentPane);
 
 			JLabel nameLabel = new JLabel("报刊名字：");
-			nameLabel.setBounds(82, 29, 54, 15);
+			nameLabel.setBounds(36, 29, 100, 15);
 			contentPane.add(nameLabel);
 
 			nameTextField = new JTextField();
@@ -50,7 +50,7 @@ public class Newspaperrukudata {
 			contentPane.add(nameTextField);
 
 			JLabel pressLabel = new JLabel("报刊出版社：");
-			pressLabel.setBounds(82, 69, 54, 15);
+			pressLabel.setBounds(36, 69, 110, 15);
 			contentPane.add(pressLabel);
 
 			pressTextField = new JTextField();
@@ -59,7 +59,7 @@ public class Newspaperrukudata {
 			contentPane.add(pressTextField);
 
 			JLabel PubTimeLabel = new JLabel("报刊出版时间：");
-			PubTimeLabel.setBounds(82, 105, 54, 15);
+			PubTimeLabel.setBounds(36, 105, 140, 18);
 			contentPane.add(PubTimeLabel);
 
 			PubTimeTextField = new JTextField();
@@ -68,7 +68,7 @@ public class Newspaperrukudata {
 			contentPane.add(PubTimeTextField);
 
 			JLabel totalLabel = new JLabel("报刊数量：");
-			totalLabel.setBounds(82, 145, 54, 15);
+			totalLabel.setBounds(36, 145, 100, 15);
 			contentPane.add(totalLabel);
 
 			totalTextField = new JTextField();
@@ -77,7 +77,7 @@ public class Newspaperrukudata {
 			contentPane.add(totalTextField);
 
 			JLabel priceLabel = new JLabel("报刊价格：");
-			priceLabel.setBounds(82, 185, 54, 15);
+			priceLabel.setBounds(36, 185, 100, 15);
 			contentPane.add(priceLabel);
 
 			priceTextField = new JTextField();
@@ -141,5 +141,5 @@ public class Newspaperrukudata {
 			cancleButton.setBounds(236, 340, 100, 30);
 			contentPane.add(cancleButton);
 		}
-	}
+	
 }

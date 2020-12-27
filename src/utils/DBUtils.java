@@ -272,7 +272,7 @@ public class DBUtils {
 	}
 	
 	
-	
+// 以下代码  ：返回一个表数据在制作表时候用到，在NewspaperBorrowedTableModel中使用，传输data 变量
 	public static Vector<Vector<String>> getAllBookInfos() {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -295,7 +295,7 @@ public class DBUtils {
 				}
 				resultData.add(rowData);
 			}
-			return resultData;
+			return resultData;//返回一个表数据在制作表时候用到，在NewspaperBorrowedTableModel中使用，传输data 变量
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

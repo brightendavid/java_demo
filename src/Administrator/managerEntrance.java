@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import reader.ReaderDetail;
+import reader.ReaderEntrance;
 import reader.ReaderRegister;
 import utils.DBUtils;
 import java.awt.Color;
@@ -40,7 +40,7 @@ public class managerEntrance {
 	public managerEntrance() {
 		frame = new JFrame();
 		frame.setTitle("\u7BA1\u7406\u5458\u767B\u5F55");
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 528, 348);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,7 +95,7 @@ public class managerEntrance {
 			}
 		});
 		registerButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		registerButton.setBounds(35, 212, 120, 40);
+		registerButton.setBounds(14, 212, 120, 40);
 		contentPane.add(registerButton);
 //登录检查,完成，姓名输入是无效的，独立的admin登录界面
 		loginButton = new JButton("登录");
@@ -134,8 +134,19 @@ public class managerEntrance {
 			}
 		});
 		loginButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		loginButton.setBounds(275, 212, 120, 40);
+		loginButton.setBounds(148, 212, 120, 40);
 		contentPane.add(loginButton);
 		frame.getRootPane().setDefaultButton(loginButton);
+		
+		JButton btnNewButton = new JButton("跳跃到READER");
+		btnNewButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				new ReaderEntrance();
+			}
+		});
+		btnNewButton.setBounds(282, 212, 226, 40);
+		contentPane.add(btnNewButton);
 	}
 }
