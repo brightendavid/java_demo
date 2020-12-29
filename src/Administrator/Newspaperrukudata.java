@@ -101,25 +101,33 @@ public class Newspaperrukudata {
 						JOptionPane.showMessageDialog(null, "报刊名字,报刊数量,报刊价格必填，请继续输入", "提示", JOptionPane.INFORMATION_MESSAGE);
 						return;
 					}
-					if (total.length()<2 ) {
+					/*if (total.length()<2 ) {
 						JOptionPane.showMessageDialog(null, "数量不能为0，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
 						return;
-					}
-					String nameInt = null;
+					}*/
+					int total2=0;
 					try {
-						nameInt = String.valueOf(name);
+						total2=Integer.valueOf(total);
 					} catch (NumberFormatException e2) {
-						JOptionPane.showMessageDialog(null, "报刊名字不符合规则，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "输入的数量不符合规则，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
 						return;
 					}
 					
-
-					if (DBUtils.checkNews_Number(nameInt)) {
+					//String nameInt = null;
+					int price2=0;
+					try {
+						price2=Integer.valueOf(price);
+					} catch (NumberFormatException e2) {
+						JOptionPane.showMessageDialog(null, "输入的价格不符合规则，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
+						return;
+					}
+					
+					if (DBUtils.checkNews_Number(name)) {
 						JOptionPane.showMessageDialog(null, "该报刊已存在，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
 						nameTextField.setText("");
 						return;
 					}
-					if (DBUtils.registerNEWS( name, press, PubTime,  total, price)) {
+					if (DBUtils.registerNEWS( name, press, PubTime,  total2, price2)) {
 						JOptionPane.showMessageDialog(null, "添加成功！", "通知", JOptionPane.INFORMATION_MESSAGE);
 						frame.dispose();
 					} else {

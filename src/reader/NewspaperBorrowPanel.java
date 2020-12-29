@@ -103,7 +103,7 @@ public class NewspaperBorrowPanel extends JPanel {
 		table = new JTable();
 		table.setModel(new BookTableModel());
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 79, 521, 211);
+		scrollPane.setBounds(10, 79, 528, 223);
 		add(scrollPane);
 
 	}

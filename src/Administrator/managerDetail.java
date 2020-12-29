@@ -10,10 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import reader.NewspaperBorrowPanel;
-import reader.ReaderEntrance;
 import reader.ReaderInfoPanel;
-import reader.ReaderRegister;
-
 import java.awt.Color;
 import java.awt.SystemColor;
 
@@ -23,30 +20,38 @@ public class managerDetail {
 	private JPanel contentPane;
 	private ReaderInfoPanel managerInfoPanel;
 	private NewspaperBorrowPanel bookBorrowPanel;
+	private Newspaper_Fafang newspaperfafang;
+	
 	//private BookReturnPanel bookReturnPanel;
 	private JButton bookBorrowButton;
 	private JButton returnButton;
 	private JButton reloginButton;
+	
 	public managerDetail() {
 	frmManagerdetail = new JFrame();
 	frmManagerdetail.setTitle("managerDetail");
 	frmManagerdetail.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frmManagerdetail.setVisible(true);
-	frmManagerdetail.setBounds(100, 100, 636, 566);
+	frmManagerdetail.setBounds(100, 100, 684, 574);
 
 	managerInfoPanel = new ReaderInfoPanel();
 	managerInfoPanel.setBackground(SystemColor.info);
-	managerInfoPanel.setSize(540, 300);
+	managerInfoPanel.setSize(587, 313);
 	managerInfoPanel.setLocation(10, 10);
 
 	bookBorrowPanel = new NewspaperBorrowPanel();
 	bookBorrowPanel.setSize(540, 300);
 	bookBorrowPanel.setLocation(10, 10);
 	
+	newspaperfafang = new Newspaper_Fafang();
+	newspaperfafang.setSize(540, 300);
+	newspaperfafang.setLocation(10, 10);
+	
 	Newspaper_Ruku newspaperruku= new Newspaper_Ruku();
 	newspaperruku.setSize(540, 300);
 	newspaperruku.setLocation(10, 10);
-
+	
+	
 /*	bookReturnPanel = new BookReturnPanel();
 	bookReturnPanel.setSize(540, 300);
 	bookReturnPanel.setLocation(10, 10);*/
@@ -71,21 +76,24 @@ public class managerDetail {
 		}
 	});
 	bookBorrowButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-	bookBorrowButton.setBounds(16, 320, 120, 50);
+	bookBorrowButton.setBounds(20, 331, 120, 50);
 	contentPane.add(bookBorrowButton);
 
 	returnButton = new JButton("返回个人信息");
 	returnButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			
+			//移除一些可能的模块
 			contentPane.remove(bookBorrowPanel);
 			contentPane.remove(newspaperruku);
-		//	contentPane.remove(bookReturnPanel);
+			contentPane.remove(newspaperfafang);
+		
 			contentPane.add(managerInfoPanel);
 			contentPane.repaint();
 		}
 	});
 	returnButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-	returnButton.setBounds(298, 323, 141, 47);
+	returnButton.setBounds(298, 335, 141, 47);
 	contentPane.add(returnButton);
 //此处是邮局管理系统不需要使用的功能
 	/*bookReturnButton = new JButton("图书归还");
@@ -101,7 +109,8 @@ public class managerDetail {
 	bookReturnButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 	bookReturnButton.setBounds(152, 320, 120, 50);
 	contentPane.add(bookReturnButton);*/
-
+	
+	
 	reloginButton = new JButton("返回登录");
 	reloginButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -110,7 +119,7 @@ public class managerDetail {
 		}
 	});
 	reloginButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-	reloginButton.setBounds(453, 320, 120, 50);
+	reloginButton.setBounds(463, 331, 120, 50);
 	contentPane.add(reloginButton);
 	
 	JButton button = new JButton("报刊入库管理");
@@ -120,7 +129,7 @@ public class managerDetail {
 				
 		}
 	});
-	button.setBounds(150, 323, 134, 47);
+	button.setBounds(150, 336, 134, 47);
 	contentPane.add(button);
 	
 	JButton button_1 = new JButton("报刊数据管理");
@@ -135,9 +144,8 @@ public class managerDetail {
 	button_3.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			contentPane.remove(managerInfoPanel);
-		//	contentPane.remove(bookReturnPanel);
 			bookBorrowPanel.refresh();
-			contentPane.add(bookBorrowPanel);
+			contentPane.add(newspaperfafang);
 			contentPane.repaint();
 		}
 	});

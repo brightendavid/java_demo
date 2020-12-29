@@ -1,6 +1,6 @@
 package Administrator;
 
- //报刊入库管理，对应managerDetail  的报刊入库管理buttom
+ //报刊入库管理，对应managerDetail  的报刊入库管理buttom  现在没有什么用了
 	
 
 import java.awt.event.ActionEvent;

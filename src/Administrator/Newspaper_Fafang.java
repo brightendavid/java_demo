@@ -14,12 +14,14 @@ import javax.swing.JTextField;
 
 import reader.BookTableModel;
 import reader.ReaderEntrance;
+import reader.ReaderborrowModer;
 import utils.DBUtils;
 
 public class Newspaper_Fafang extends JPanel{
 	
 	private JTextField bookNameTextField;
 	private JTable table;
+	private JTextField numtextfield;
 
 	/**
 	 * Create the panel.
@@ -28,12 +30,12 @@ public class Newspaper_Fafang extends JPanel{
 		setLayout(null);
 
 		bookNameTextField = new JTextField();
-		bookNameTextField.setBounds(98, 34, 99, 21);
+		bookNameTextField.setBounds(120, 34, 99, 21);
 		add(bookNameTextField);
 		bookNameTextField.setColumns(10);
 
 		JLabel bookNameLabel = new JLabel("请输入书名：");
-		bookNameLabel.setBounds(10, 37, 78, 15);
+		bookNameLabel.setBounds(10, 36, 106, 18);
 		add(bookNameLabel);
 
 		JButton queryButton = new JButton("查询");
@@ -48,7 +50,7 @@ public class Newspaper_Fafang extends JPanel{
 				table.setModel(new BookTableModel(data));    //打印表格
 			}
 		});
-		queryButton.setBounds(218, 33, 93, 23);
+		queryButton.setBounds(252, 34, 119, 21);
 		add(queryButton);
 
 		JButton refreshButton = new JButton("刷新");
@@ -60,10 +62,11 @@ public class Newspaper_Fafang extends JPanel{
 				table.setModel(new BookTableModel(data));
 			}
 		});
-		refreshButton.setBounds(333, 33, 93, 23);
+		refreshButton.setBounds(385, 34, 99, 21);
 		add(refreshButton);
-
-		JButton borrowButton = new JButton("借阅");
+		
+//管理员的订阅功能不需要
+		/*JButton borrowButton = new JButton("定阅");
 		borrowButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int rowNum = table.getSelectedRow();
@@ -100,17 +103,98 @@ public class Newspaper_Fafang extends JPanel{
 			}
 		});
 		borrowButton.setBounds(438, 33, 93, 23);
-		add(borrowButton);
+		add(borrowButton);*/
 
 		table = new JTable();
-		table.setModel(new BookTableModel());
+		table.setModel(new ReaderborrowModer());
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 79, 521, 211);
+		scrollPane.setBounds(10, 105, 505, 152);
 		add(scrollPane);
+		
+		JButton button = new JButton("解除此订阅");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//改写
+				int rowNum = table.getSelectedRow();
+				//int readerNumber = ReaderEntrance.readerNumber;
+				//int readerNumber=(int) table.getValueAt(rowNum, 1);
+				if (rowNum < 0 || rowNum > table.getRowCount()) {
+					JOptionPane.showMessageDialog(null, "未选中", "提示", JOptionPane.PLAIN_MESSAGE);
+				}
+				else {
+					int n = JOptionPane.showConfirmDialog(null, "确认解除借阅吗?", "提示", JOptionPane.YES_NO_OPTION);
+					if (n == JOptionPane.YES_OPTION) {
+						String isbn = (String) table.getValueAt(rowNum, 1);//这个是从0开始计数的
+						String readerNum=(String) table.getValueAt(rowNum, 0);
+						int num=Integer.valueOf(readerNum);
+							
+
+							if (!DBUtils.jiechu_borrowOneBook(num, isbn)) {
+								JOptionPane.showMessageDialog(null, "解除借阅失败", "提示", JOptionPane.PLAIN_MESSAGE);
+								return;
+							}
+							else{
+								JOptionPane.showMessageDialog(null, "解除借阅成功", "提示", JOptionPane.PLAIN_MESSAGE);
+								return;
+							}
+						
+
+						
+
+					} 
+					else if (n == JOptionPane.NO_OPTION) {
+						return;
+					}
+				}
+				Vector<Vector<String>> data = DBUtils.getAllreaderInfos();
+				table.setModel(new ReaderborrowModer(data));
+			}
+		});
+		button.setBounds(385, 270, 111, 27);
+		add(button);
+		
+		JLabel label = new JLabel("输入人名编号：");
+		label.setBounds(10, 74, 106, 18);
+		add(label);
+		
+		numtextfield = new JTextField();
+		numtextfield.setBounds(120, 68, 86, 24);
+		add(numtextfield);
+		numtextfield.setColumns(10);
+		
+		JButton button_1 = new JButton("查询");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String num= numtextfield.getText();
+				if (num.equals("")) {
+					JOptionPane.showMessageDialog(null, "请输入reader的序号", "提示", JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
+				Vector<Vector<String>> data = DBUtils.getreadernumInfo(num);
+				table.setModel(new ReaderborrowModer(data));    //打印表格
+			}
+		});
+		button_1.setBounds(243, 70, 128, 22);
+		add(button_1);
+		
+		JButton button_2 = new JButton("刷新");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				bookNameTextField.setText("");
+
+				Vector<Vector<String>> data = DBUtils.getAllreaderInfos();
+				table.setModel(new ReaderborrowModer(data));
+				
+			}
+		});
+		button_2.setBounds(385, 71, 99, 21);
+		add(button_2);
 
 	}
 
 	public void refresh() {
-		table.setModel(new BookTableModel());
+		//table.setModel(new BookTableModel());
+		table.setModel(new ReaderborrowModer());
 	}
 }

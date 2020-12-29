@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 public class DBUtils {
 	public static boolean verifyReader(int number, String password) {
 		Connection conn = null;
@@ -244,7 +246,7 @@ public class DBUtils {
 		}
 	}
 	//新建方法  添加数据News_paper
-	public static boolean registerNEWS(String  name,String press,String PubTime,String  total,String price) {
+	public static boolean registerNEWS(String  name,String publish_press,String publish_Time,int  total,int price) {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -252,14 +254,15 @@ public class DBUtils {
 		try {
 			conn = JDBCUtils.getConnection();
 
-			String sql = "insert into reader( name, press, PubTime,  total, price) "
-					+ "values (?,		 ?,	   ?,   ?,     ?)";
+			String sql = "insert into book( name, publish_press, publish_Time,  total,remain, price) "
+					+ "values (?,    ?,	   ?,   ?,     ?,?)";
 			st = conn.prepareStatement(sql);
 			st.setString(1, name);
-			st.setString(2, press);
-			st.setString(3, PubTime);
-			st.setString(4, total);
-			st.setString(5, price);
+			st.setString(2, publish_press);
+			st.setString(3, publish_Time);
+			st.setInt(4, total);
+			st.setInt(5,total);
+			st.setInt(6, price);
 
 			int result = st.executeUpdate();
 			return result != 0;
@@ -303,7 +306,39 @@ public class DBUtils {
 			JDBCUtils.release(conn, st, rs);
 		}
 	}
+	
+	
+	public static Vector<Vector<String>> getAllreaderInfos() {
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		Vector<Vector<String>> resultData = new Vector<>();
+		try {
+			conn = JDBCUtils.getConnection();
 
+			String sql = "select * from borrow";
+			st = conn.prepareStatement(sql);
+
+			rs = st.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int columnCount = rsmd.getColumnCount();
+			while (rs.next()) {
+				Vector<String> rowData = new Vector<>();
+
+				for (int j = 1; j < columnCount + 1; j++) {
+					rowData.add(rs.getString(j));
+				}
+				resultData.add(rowData);
+			}
+			return resultData;//返回一个表数据在制作表时候用到，在NewspaperBorrowedTableModel中使用，传输data 变量
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
+	
 	public static Vector<Vector<String>> getBookInfo(String bookName) {//查询书名
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -336,8 +371,42 @@ public class DBUtils {
 			JDBCUtils.release(conn, st, rs);
 		}
 	}
+	
+	public static Vector<Vector<String>> getreadernumInfo(String num) {//查询人名的号码
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		Vector<Vector<String>> resultData = new Vector<>();
+		try {
+			conn = JDBCUtils.getConnection();
 
-	public static boolean borrowOneBook(int number, String isbn) {
+			String sql = "select * from borrow "
+					+ "where reader_number = ?";
+			st = conn.prepareStatement(sql);
+			int number=Integer.parseInt(num);
+			st.setInt(1, number);
+
+			rs = st.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int columnCount = rsmd.getColumnCount();
+			while (rs.next()) {
+				Vector<String> rowData = new Vector<>();
+
+				for (int j = 1; j < columnCount + 1; j++) {
+					rowData.add(rs.getString(j));
+				}
+				resultData.add(rowData);
+			}
+			return resultData;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
+	
+	public static boolean borrowOneBook(int number, String isbn) {//订阅一本
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -365,7 +434,60 @@ public class DBUtils {
 			JDBCUtils.release(conn, st, rs);
 		}
 	}
+	
+	///////
+	public static boolean jiechu_borrowOneBook(int number, String isbn) {//解除订阅
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
+		int isbn2=Integer.valueOf(isbn);
+		//时间类型
+		java.util.Date date=new java.util.Date();
+		java.sql.Date sqlDate=new java.sql.Date(date.getTime());
+		java.sql.Timestamp sqlTime=new java.sql.Timestamp(date.getTime());
+		
+		
 
+		try {
+			conn = JDBCUtils.getConnection();
+			
+		
+			String sql0= "select borrow_time into Timestamp from borrow where isbn=? and number =?";//查询借阅时间
+			st = conn.prepareStatement(sql0);
+			st.setInt(1, number);
+			st.setString(2, isbn);
+	
+			String sql = "delete from borrow "+
+					"where isbn=? and reader_number=?";//删除记录完成
+			st = conn.prepareStatement(sql);
+			st.setInt(1, isbn2);
+			st.setInt(2, number);
+			int result = st.executeUpdate();
+	
+			//增加history记录，借阅的记录
+			String sql1 = "insert into borrow_history(reader_number, isbn, borrow_time,return_time) " + "values (?,		 ?,?,   now())";
+			st = conn.prepareStatement(sql1);
+			st.setInt(1, number);
+			st.setString(2, isbn);
+			st.setTimestamp(3, sqlTime);
+			int result1 = st.executeUpdate();
+
+			String sql2 = "update book set remain = remain + 1 where isbn = ?";//相关的记录增加1本
+			st = conn.prepareStatement(sql2);
+			st.setString(1, isbn);
+			int result2 = st.executeUpdate();
+		
+			
+			//return result != 0 && result2 != 0 && result1 != 0;
+			return result != 0 ;//&& result2 != 0 ;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
 	public static boolean verifyBorrow(int readerNumber, String isbn) {
 		Connection conn = null;
 		PreparedStatement st = null;
