@@ -16,10 +16,6 @@ import utils.DBUtils;
 
 public class managerInfoPanel extends JPanel {
 
-	private static JLabel ageInfoLabel;
-	private static JLabel emailInfoLabel;
-	private static JLabel telInfoLabel;
-
 	/**
 	 * Create the panel.
 	 */
@@ -32,7 +28,7 @@ public class managerInfoPanel extends JPanel {
 
 		setLayout(null);
 
-		JLabel titleLabel = new JLabel("ÓÊ¾Ö±¨¿¯¶©ÔÄ");
+		JLabel titleLabel = new JLabel("\u90AE\u5C40\u62A5\u520A\u8BA2\u9605admin\u754C\u9762");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 25));
 		titleLabel.setBounds(111, 23, 319, 40);
@@ -40,65 +36,25 @@ public class managerInfoPanel extends JPanel {
 
 		JLabel nameLabel = new JLabel("ÐÕÃû£º");
 		nameLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		nameLabel.setBounds(50, 85, 60, 40);
+		nameLabel.setBounds(103, 137, 60, 40);
 		add(nameLabel);
 
 		JLabel nunberLabel = new JLabel("Ñ§ºÅ£º");
 		nunberLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		nunberLabel.setBounds(50, 160, 60, 40);
+		nunberLabel.setBounds(341, 137, 60, 40);
 		add(nunberLabel);
 
-		JLabel sexLabel = new JLabel("ÐÔ±ð£º");
-		sexLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		sexLabel.setBounds(191, 85, 60, 40);
-		add(sexLabel);
-
-		JLabel ageLabel = new JLabel("ÄêÁä£º");
-		ageLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		ageLabel.setBounds(190, 160, 60, 40);
-		add(ageLabel);
-
-		JLabel telLabel = new JLabel("µç»°£º");
-		telLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		telLabel.setBounds(319, 85, 60, 40);
-		add(telLabel);
-
-		JLabel emailLabel = new JLabel("ÓÊÏä£º");
-		emailLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		emailLabel.setBounds(319, 160, 60, 40);
-		add(emailLabel);
-
-		JLabel nameInfoLabel = new JLabel(String.valueOf(readerInfo.get("name")));
+		JLabel nameInfoLabel = new JLabel("admin");
 		nameInfoLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		nameInfoLabel.setBounds(104, 85, 77, 40);
+		nameInfoLabel.setBounds(160, 137, 77, 40);
 		add(nameInfoLabel);
 
-		JLabel sexInfoLabel = new JLabel(String.valueOf(readerInfo.get("sex")));
-		sexInfoLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		sexInfoLabel.setBounds(245, 85, 60, 40);
-		add(sexInfoLabel);
-
-		telInfoLabel = new JLabel(String.valueOf(readerInfo.get("telephone")));
-		telInfoLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
-		telInfoLabel.setBounds(377, 85, 129, 40);
-		add(telInfoLabel);
-
-		JLabel numberInfoLabel = new JLabel(String.valueOf(readerInfo.get("number")));
+		JLabel numberInfoLabel = new JLabel("999");
 		numberInfoLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		numberInfoLabel.setBounds(105, 160, 75, 40);
+		numberInfoLabel.setBounds(435, 137, 75, 40);
 		add(numberInfoLabel);
-
-		ageInfoLabel = new JLabel(String.valueOf(readerInfo.get("age")));
-		ageInfoLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		ageInfoLabel.setBounds(245, 160, 60, 40);
-		add(ageInfoLabel);
-
-		emailInfoLabel = new JLabel(String.valueOf(readerInfo.get("email")));
-		emailInfoLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 14));
-		emailInfoLabel.setBounds(377, 160, 129, 40);
-		add(emailInfoLabel);
-
-		JButton infoModifyButton = new JButton("ÐÞ¸Ä¸öÈËÐÅÏ¢");
+//²»ÐèÒª
+		/*JButton infoModifyButton = new JButton("ÐÞ¸Ä¸öÈËÐÅÏ¢");
 		infoModifyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new managerInfoModifier();
@@ -106,9 +62,9 @@ public class managerInfoPanel extends JPanel {
 		});
 		infoModifyButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
 		infoModifyButton.setBounds(50, 233, 162, 50);
-		add(infoModifyButton);
+		add(infoModifyButton);*/
 
-		JButton passwordModifyButton = new JButton("ÐÞ¸ÄÃÜÂë");
+		/*JButton passwordModifyButton = new JButton("ÐÞ¸ÄÃÜÂë");
 		passwordModifyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ReaderPasswordModifier();
@@ -116,16 +72,16 @@ public class managerInfoPanel extends JPanel {
 		});
 		passwordModifyButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
 		passwordModifyButton.setBounds(308, 233, 114, 50);
-		add(passwordModifyButton);
+		add(passwordModifyButton);*/
 
 	}
 
-	public static void updatePanel() {
+	/*public static void updatePanel() {
 		int number = managerEntrance.manageNumber;
 		Map<String, Object> readerInfo = DBUtils.getStudentInfo(number);
 		telInfoLabel.setText(String.valueOf(readerInfo.get("telephone")));
 		ageInfoLabel.setText(String.valueOf(readerInfo.get("age")));
 		emailInfoLabel.setText(String.valueOf(readerInfo.get("email")));
-	}
+	}*/
 }
 

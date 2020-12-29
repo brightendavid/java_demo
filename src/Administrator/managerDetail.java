@@ -18,7 +18,7 @@ public class managerDetail {
 	
 	private JFrame frmManagerdetail;
 	private JPanel contentPane;
-	private ReaderInfoPanel managerInfoPanel;
+	private managerInfoPanel managerInfoPanel;
 	private NewspaperBorrowPanel bookBorrowPanel;
 	private Newspaper_Fafang newspaperfafang;
 	
@@ -34,7 +34,7 @@ public class managerDetail {
 	frmManagerdetail.setVisible(true);
 	frmManagerdetail.setBounds(100, 100, 684, 574);
 
-	managerInfoPanel = new ReaderInfoPanel();
+	managerInfoPanel = new managerInfoPanel();
 	managerInfoPanel.setBackground(SystemColor.info);
 	managerInfoPanel.setSize(587, 313);
 	managerInfoPanel.setLocation(10, 10);
@@ -64,7 +64,7 @@ public class managerDetail {
 	contentPane.add(managerInfoPanel);
 	frmManagerdetail.setContentPane(contentPane);
 
-	bookBorrowButton = new JButton("报刊订阅");
+	/*bookBorrowButton = new JButton("报刊订阅");
 	bookBorrowButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			contentPane.remove(managerInfoPanel);
@@ -77,7 +77,7 @@ public class managerDetail {
 	});
 	bookBorrowButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 	bookBorrowButton.setBounds(20, 331, 120, 50);
-	contentPane.add(bookBorrowButton);
+	contentPane.add(bookBorrowButton);*/
 
 	returnButton = new JButton("返回个人信息");
 	returnButton.addActionListener(new ActionListener() {

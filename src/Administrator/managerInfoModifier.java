@@ -114,8 +114,8 @@ public class managerInfoModifier {
 		emailInfoTextField.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		emailInfoTextField.setBounds(280, 161, 129, 40);
 		infoPanel.add(emailInfoTextField);
-//加入住址
-		JLabel addressLabel = new JLabel("住址：");
+//加入住址 还是算了
+		/*JLabel addressLabel = new JLabel("住址：");
 		addressLabel.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		addressLabel.setBounds(220, 200, 60, 40);
 		infoPanel.add(addressLabel);
@@ -123,7 +123,7 @@ public class managerInfoModifier {
 		JTextField addressInfoTextField = new JTextField(String.valueOf(readerInfo.get("email")));
 		addressInfoTextField.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		addressInfoTextField.setBounds(280, 211, 220, 40);
-		infoPanel.add(addressInfoTextField);
+		infoPanel.add(addressInfoTextField);*/
 
 		{
 			JPanel buttonPane = new JPanel();

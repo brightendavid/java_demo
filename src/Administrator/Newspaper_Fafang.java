@@ -33,7 +33,9 @@ public class Newspaper_Fafang extends JPanel{
 		bookNameTextField.setBounds(120, 34, 99, 21);
 		add(bookNameTextField);
 		bookNameTextField.setColumns(10);
-
+		
+		JButton button = new JButton("解除此订阅");
+		
 		JLabel bookNameLabel = new JLabel("请输入书名：");
 		bookNameLabel.setBounds(10, 36, 106, 18);
 		add(bookNameLabel);
@@ -57,6 +59,7 @@ public class Newspaper_Fafang extends JPanel{
 		refreshButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bookNameTextField.setText("");
+				button.setEnabled(false);
 
 				Vector<Vector<String>> data = DBUtils.getAllBookInfos();
 				table.setModel(new BookTableModel(data));
@@ -111,10 +114,11 @@ public class Newspaper_Fafang extends JPanel{
 		scrollPane.setBounds(10, 105, 505, 152);
 		add(scrollPane);
 		
-		JButton button = new JButton("解除此订阅");
+		//JButton button = new JButton("解除此订阅");  放到了上面
+		button.setEnabled(false); 
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//改写
+				//改写完成，这个数据库的同步做的很完美
 				int rowNum = table.getSelectedRow();
 				//int readerNumber = ReaderEntrance.readerNumber;
 				//int readerNumber=(int) table.getValueAt(rowNum, 1);
@@ -180,9 +184,9 @@ public class Newspaper_Fafang extends JPanel{
 		JButton button_2 = new JButton("刷新");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				button.setEnabled(true); 
 				bookNameTextField.setText("");
-
+				
 				Vector<Vector<String>> data = DBUtils.getAllreaderInfos();
 				table.setModel(new ReaderborrowModer(data));
 				
