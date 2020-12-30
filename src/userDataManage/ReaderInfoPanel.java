@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import reader.ReaderEntrance;
 import utils.DBUtils;
 
 public class ReaderInfoPanel extends JPanel {

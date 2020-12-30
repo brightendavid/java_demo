@@ -1,6 +1,6 @@
-package User;
+package Administrator;
 
-mport java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -13,6 +13,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import reader.BookTableModel;
+import reader.NewspaperBorrowedTableModel;
+import reader.ReaderEntrance;
 import utils.DBUtils;
 
 public class NewspaperReturnPanel extends JPanel {
@@ -99,6 +102,6 @@ public class NewspaperReturnPanel extends JPanel {
 	}
 
 	public void refresh() {
-		table.setModel(new BookBorrowedTableModel(ReaderEntrance.readerNumber));
+		table.setModel(new NewspaperBorrowedTableModel(ReaderEntrance.readerNumber));
 	}
 }

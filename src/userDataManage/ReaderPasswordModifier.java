@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
-import User.ReaderEntrance;
+import reader.ReaderEntrance;
 import utils.DBUtils;
 
 public class ReaderPasswordModifier {

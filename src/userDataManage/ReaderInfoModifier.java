@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import reader.ReaderEntrance;
 import utils.DBUtils;
 
 import javax.swing.JLabel;
