@@ -34,7 +34,7 @@ public class ReaderRegister {
 	public ReaderRegister() {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 418, 431);
+		frame.setBounds(100, 100, 585, 429);
 		frame.setVisible(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -188,5 +188,9 @@ public class ReaderRegister {
 		});
 		cancleButton.setBounds(236, 340, 100, 30);
 		contentPane.add(cancleButton);
+		
+		JLabel lblNewLabel = new JLabel("\u59D3\u540D\u957F\u5EA6\u4E0D\u5927\u4E8E4\uFF01\uFF01\uFF01");
+		lblNewLabel.setBounds(364, 8, 173, 57);
+		contentPane.add(lblNewLabel);
 	}
 }

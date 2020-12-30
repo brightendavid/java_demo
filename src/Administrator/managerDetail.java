@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import reader.NewspaperBorrowPanel;
-import reader.ReaderInfoPanel;
+import userDataManage.ReaderInfoPanel;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 
@@ -21,7 +22,7 @@ public class managerDetail {
 	private managerInfoPanel managerInfoPanel;
 	private NewspaperBorrowPanel bookBorrowPanel;
 	private Newspaper_Fafang newspaperfafang;
-	
+	private ReaderInfoPanel readerPanel;
 	//private BookReturnPanel bookReturnPanel;
 	private JButton bookBorrowButton;
 	private JButton returnButton;
@@ -46,6 +47,10 @@ public class managerDetail {
 	newspaperfafang = new Newspaper_Fafang();
 	newspaperfafang.setSize(540, 300);
 	newspaperfafang.setLocation(10, 10);
+	
+	readerPanel=new ReaderInfoPanel();
+	readerPanel.setSize(540, 300);
+	readerPanel.setLocation(10, 10);
 	
 	Newspaper_Ruku newspaperruku= new Newspaper_Ruku();
 	newspaperruku.setSize(540, 300);
@@ -87,7 +92,7 @@ public class managerDetail {
 			contentPane.remove(bookBorrowPanel);
 			contentPane.remove(newspaperruku);
 			contentPane.remove(newspaperfafang);
-		
+			contentPane.remove(readerPanel);
 			contentPane.add(managerInfoPanel);
 			contentPane.repaint();
 		}
@@ -137,13 +142,16 @@ public class managerDetail {
 	contentPane.add(button_1);
 	
 	JButton button_2 = new JButton("客户数据管理");
-	button_2.setBounds(298, 394, 275, 27);
-	contentPane.add(button_2);
-	button.addActionListener(new ActionListener() {
+	button_2.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			new ReaderInfoPanel();
+			contentPane.remove(managerInfoPanel);
+			bookBorrowPanel.refresh();
+			contentPane.add(readerPanel);
+			contentPane.repaint();
 		}
 	});
+	button_2.setBounds(298, 394, 275, 27);
+	contentPane.add(button_2);
 	
 	JButton button_3 = new JButton("报刊发放管理");//需要改为发放有关的字段
 	button_3.addActionListener(new ActionListener() {
