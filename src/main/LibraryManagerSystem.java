@@ -3,7 +3,6 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,12 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
-import com.sun.prism.paint.Color;
-
 import Administrator.managerEntrance;
 import reader.ReaderEntrance;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -53,6 +48,20 @@ public class LibraryManagerSystem {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		try {//将本项目的所有按钮变为圆按钮，并调整字体，润色            独立代码，可以消去
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        }catch(Exception e) {
+        	System.out.println(e);
+        }
+		
+		
+		
 //界面设计开始界面
 		frame = new JFrame("浙江工商大学图书馆管理系统");//窗口
 		frame.setAlwaysOnTop(true);
