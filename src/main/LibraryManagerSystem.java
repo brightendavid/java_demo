@@ -14,6 +14,7 @@ import Administrator.managerEntrance;
 import reader.ReaderEntrance;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class LibraryManagerSystem {
 
@@ -71,7 +72,7 @@ public class LibraryManagerSystem {
 //图片
 		ImageIcon image = new ImageIcon("E:\\OneDrive\\图片\\示例.jpg");
 		JLabel Limage = new JLabel(image);
-		Limage.setForeground(java.awt.Color.DARK_GRAY);
+		Limage.setForeground(Color.WHITE);
 		Limage.setBackground(java.awt.Color.CYAN);
 		frame.getContentPane().add(Limage,java.awt.BorderLayout.NORTH);//上部图片部分
 		
@@ -96,6 +97,7 @@ public class LibraryManagerSystem {
 		contentPanel.add(titleLabel);
 //管理员
 		JButton managerButton = new JButton("管理员入口");
+		managerButton.setBackground(Color.PINK);
 		managerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -111,6 +113,7 @@ public class LibraryManagerSystem {
 		
 //读者
 		JButton readerButton = new JButton("读者入口");
+		readerButton.setBackground(Color.PINK);
 		readerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();

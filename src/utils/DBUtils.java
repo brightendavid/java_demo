@@ -416,17 +416,26 @@ public class DBUtils {
 		try {
 			conn = JDBCUtils.getConnection();
 
-			String sql = "insert into borrow(reader_number, isbn, borrow_time) " + "values (?,		 ?,	   now())";
+			String sql = "insert into borrow(reader_number, isbn, borrow_time,shixiao_time) " + "values (?,		 ?,	   now(),date_add(CURRENT_DATE(), interval 1 year ))";
 			st = conn.prepareStatement(sql);
 			st.setInt(1, number);
 			st.setString(2, isbn);
-
 			int result = st.executeUpdate();
 
 			String sql2 = "update book set remain = remain - 1 where isbn = ?";
 			st = conn.prepareStatement(sql2);
 			st.setString(1, isbn);
 			int result2 = st.executeUpdate();
+			
+			//还要改   增加history的记录  不记录归还时间                 错了
+			/*String sql3 = "insert into borrow_history(reader_number, isbn, borrow_time) " + "values (?,		 ?, now())";
+			//String sql3 = "insert into borrow(reader_number, isbn, borrow_time) " + "values (?,		 ?,	   now())";
+			st = conn.prepareStatement(sql3);
+			st.setInt(1, number);
+			st.setString(2, isbn);
+			int result3 = st.executeUpdate();*/
+			
+			
 
 			return result != 0 && result2 != 0;
 		} catch (Exception e) {
@@ -490,6 +499,8 @@ public class DBUtils {
 			JDBCUtils.release(conn, st, rs);
 		}
 	}
+	
+	
 	public static boolean verifyBorrow(int readerNumber, String isbn) {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -589,35 +600,44 @@ public class DBUtils {
 
 		try {
 			conn = JDBCUtils.getConnection();
+			
+			
 
+			
+			/*String sql3 = "insert into borrow_history(reader_number, isbn, borrow_time) " + "values (?,		 ?, now())";
+			//String sql3 = "insert into borrow(reader_number, isbn, borrow_time) " + "values (?,		 ?,	   now())";
+			st = conn.prepareStatement(sql3);
+			st.setInt(1, number);
+			st.setString(2, isbn);
+			int result3 = st.executeUpdate();*/
+			//添加数据   会有一点问题
+			//String sql1 = "insert into borrow_history(reader_number, isbn, borrow_time,return_time) " + "values (?,		 ?,?,   now())";
+			String sql2 = "insert into borrow_history(reader_number,isbn,borrow_time) select reader_number, isbn, borrow_time from borrow where reader_number = ? and isbn = ?";
+			st = conn.prepareStatement(sql2);
+			st.setInt(1, number);
+			st.setString(2, isbn);
+			int result2 = st.executeUpdate();
+			
+			//删除borrow表的记录
 			String sql = "delete from borrow where reader_number = ? and isbn = ?";
 			st = conn.prepareStatement(sql);
 			st.setInt(1, number);
 			st.setString(2, isbn);
-
 			int result = st.executeUpdate();
-
-//			String sql2 = "insert into borrow_history(reader_number,isbn,borrow_time) select reader_number, isbn, borrow_time from borrow where reader_number = ? and isbn = ?";
-//			st = conn.prepareStatement(sql2);
-//			st.setInt(1, number);
-//			st.setString(2, isbn);
-//
-//			int result2 = st.executeUpdate();
-//			
-//			String sql3 = "update borrow_history set return_time = now() where reader_number = ? and isbn = ?";
-//			st = conn.prepareStatement(sql3);
-//			st.setInt(1, number);
-//			st.setString(2, isbn);
-//
-//			int result3 = st.executeUpdate();
-
+			
+			String sql3 = "update borrow_history set return_time = now() where reader_number = ? and isbn = ?";
+			st = conn.prepareStatement(sql3);
+			st.setInt(1, number);
+			st.setString(2, isbn);
+			int result3 = st.executeUpdate();
+			
+			
 			String sql4 = "update book set remain = remain + 1 where isbn = ?";
 			st = conn.prepareStatement(sql4);
 			st.setString(1, isbn);
 			int result4 = st.executeUpdate();
 
-			return result != 0 && /** result2!=0 && result3 != 0 && **/
-					result4 != 0;
+			return result != 0 && result2!=0 && result3 != 0 && result4 != 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

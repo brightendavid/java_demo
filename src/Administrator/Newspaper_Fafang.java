@@ -35,6 +35,7 @@ public class Newspaper_Fafang extends JPanel{
 		bookNameTextField.setColumns(10);
 		
 		JButton button = new JButton("解除此订阅");
+		button.setEnabled(false);
 		
 		JLabel bookNameLabel = new JLabel("请输入书名：");
 		bookNameLabel.setBounds(10, 36, 106, 18);
@@ -113,9 +114,6 @@ public class Newspaper_Fafang extends JPanel{
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 105, 505, 152);
 		add(scrollPane);
-		
-		//JButton button = new JButton("解除此订阅");  放到了上面
-		button.setEnabled(false); 
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//改写完成，这个数据库的同步做的很完美
