@@ -246,7 +246,7 @@ public class DBUtils {
 		}
 	}
 	//新建方法  添加数据News_paper
-	public static boolean registerNEWS(String  name,String publish_press,String publish_Time,int  total,int price) {
+	public static boolean registerNEWS(String  name,String publish_press,String publish_Time,int  total,int price, String author) {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -254,15 +254,17 @@ public class DBUtils {
 		try {
 			conn = JDBCUtils.getConnection();
 
-			String sql = "insert into book( name, publish_press, publish_Time,  total,remain, price) "
-					+ "values (?,    ?,	   ?,   ?,     ?,?)";
+			String sql = "insert into book( name, publish_press,book_writer,publish_Time,  total,remain, price) "
+					+ "values (?,    ?,	   ?,   ?,     ?,?,?)";
 			st = conn.prepareStatement(sql);
 			st.setString(1, name);
 			st.setString(2, publish_press);
-			st.setString(3, publish_Time);
-			st.setInt(4, total);
-			st.setInt(5,total);
-			st.setInt(6, price);
+			st.setString(3,author);
+			st.setString(4, publish_Time);
+			st.setInt(5, total);
+			st.setInt(6,total);
+			st.setInt(7, price);
+			
 
 			int result = st.executeUpdate();
 			return result != 0;

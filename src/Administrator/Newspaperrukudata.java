@@ -2,18 +2,19 @@ package Administrator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Pattern;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import utils.DBUtils;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class Newspaperrukudata {
 
@@ -25,6 +26,7 @@ public class Newspaperrukudata {
 		private JTextField PubTimeTextField;
 		private JTextField totalTextField;
 		private JTextField priceTextField;
+		private JTextField authortextField;
 		
 
 		/**
@@ -35,13 +37,15 @@ public class Newspaperrukudata {
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setBounds(100, 100, 487, 451);
 			frame.setVisible(true);
+			//frame.setUndecorated(true);	//隐藏标题栏  会出现不明问题
 			contentPane = new JPanel();
+			contentPane.setBackground(SystemColor.activeCaption);
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			contentPane.setLayout(null);
 			frame.setContentPane(contentPane);
 
 			JLabel nameLabel = new JLabel("报刊名字：");
-			nameLabel.setBounds(36, 29, 100, 15);
+			nameLabel.setBounds(36, 29, 110, 18);
 			contentPane.add(nameLabel);
 
 			nameTextField = new JTextField();
@@ -50,7 +54,7 @@ public class Newspaperrukudata {
 			contentPane.add(nameTextField);
 
 			JLabel pressLabel = new JLabel("报刊出版社：");
-			pressLabel.setBounds(36, 69, 110, 15);
+			pressLabel.setBounds(36, 69, 110, 21);
 			contentPane.add(pressLabel);
 
 			pressTextField = new JTextField();
@@ -59,21 +63,31 @@ public class Newspaperrukudata {
 			contentPane.add(pressTextField);
 
 			JLabel PubTimeLabel = new JLabel("报刊出版时间：");
-			PubTimeLabel.setBounds(36, 105, 140, 18);
+			PubTimeLabel.setBounds(36, 97, 132, 27);
 			contentPane.add(PubTimeLabel);
-
+			
+			JLabel label = new JLabel("作者：");
+			label.setBounds(50, 218, 72, 21);
+			contentPane.add(label);
+			
+			authortextField = new JTextField();
+			authortextField.setBounds(186, 216, 159, 24);
+			contentPane.add(authortextField);
+			authortextField.setColumns(10);
+			
 			PubTimeTextField = new JTextField();
 			PubTimeTextField.setColumns(10);
 			PubTimeTextField.setBounds(190, 102, 155, 21);
 			contentPane.add(PubTimeTextField);
 
 			JLabel totalLabel = new JLabel("报刊数量：");
-			totalLabel.setBounds(36, 145, 100, 15);
+			totalLabel.setBounds(36, 145, 86, 18);
 			contentPane.add(totalLabel);
 
 			totalTextField = new JTextField();
 			totalTextField.setColumns(10);
 			totalTextField.setBounds(190, 142, 155, 21);
+			totalTextField.setOpaque(false);  
 			contentPane.add(totalTextField);
 
 			JLabel priceLabel = new JLabel("报刊价格：");
@@ -88,6 +102,9 @@ public class Newspaperrukudata {
 		
 
 			JButton registerButton = new JButton("报刊入库");
+			//registerButton.setToolTipText("\u62A5\u520A\u5165\u5E93");
+			//registerButton.setContentAreaFilled(false);/*异常*/   //设置内容区清空
+			registerButton.setIcon(new ImageIcon("D:/数据库/课程设计/3.png"));     //设置按钮图标
 			registerButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					String name = nameTextField.getText();
@@ -95,6 +112,7 @@ public class Newspaperrukudata {
 					String PubTime = PubTimeTextField.getText();
 					String total = totalTextField.getText();
 					String price = priceTextField.getText();
+					String author =authortextField.getText();
 					
 
 					if (name.equals("") || total.equals("") || price.equals("")) {
@@ -127,7 +145,7 @@ public class Newspaperrukudata {
 						nameTextField.setText("");
 						return;
 					}
-					if (DBUtils.registerNEWS( name, press, PubTime,  total2, price2)) {
+					if (DBUtils.registerNEWS( name, press, PubTime,  total2, price2,author)) {//再次修改完成
 						JOptionPane.showMessageDialog(null, "添加成功！", "通知", JOptionPane.INFORMATION_MESSAGE);
 						frame.dispose();
 					} else {
@@ -137,17 +155,19 @@ public class Newspaperrukudata {
 
 				}
 			});
-			registerButton.setBounds(68, 340, 100, 30);
+			registerButton.setBounds(80, 339, 115, 40);
 			contentPane.add(registerButton);
 
 			JButton cancleButton = new JButton("取消");
+			cancleButton.setIcon(new ImageIcon("D:/数据库/课程设计/2.png"));     //设置按钮图标
 			cancleButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					frame.dispose();
 				}
 			});
-			cancleButton.setBounds(236, 340, 100, 30);
+			cancleButton.setBounds(302, 339, 123, 40);
 			contentPane.add(cancleButton);
+			
+
 		}
-	
 }

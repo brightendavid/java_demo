@@ -55,15 +55,20 @@ public class LibraryManagerSystem {
 	private void initialize() {
 //界面设计开始界面
 		frame = new JFrame("浙江工商大学图书馆管理系统");//窗口
+		frame.setAlwaysOnTop(true);
+		frame.setBackground(new java.awt.Color(64, 64, 64));
 		frame.setBounds(200, 200, 450, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //图片
 		ImageIcon image = new ImageIcon("E:\\OneDrive\\图片\\示例.jpg");
 		JLabel Limage = new JLabel(image);
-		frame.add(Limage,java.awt.BorderLayout.NORTH);//上部图片部分
+		Limage.setForeground(java.awt.Color.DARK_GRAY);
+		Limage.setBackground(java.awt.Color.CYAN);
+		frame.getContentPane().add(Limage,java.awt.BorderLayout.NORTH);//上部图片部分
 		
 		
 		contentPanel = new JPanel();
+		contentPanel.setBackground(java.awt.Color.LIGHT_GRAY);
 		contentPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		contentPanel.setLayout(null);
 //		frame.setContentPane(contentPanel);
@@ -91,7 +96,7 @@ public class LibraryManagerSystem {
 			}
 		});
 		managerButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		managerButton.setBounds(150, 100, 200, 50);
+		managerButton.setBounds(131, 87, 200, 50);
 		contentPanel.add(managerButton);
 		
 		
@@ -104,12 +109,12 @@ public class LibraryManagerSystem {
 			}
 		});
 		readerButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		readerButton.setBounds(150, 200, 200, 50);
+		readerButton.setBounds(131, 175, 200, 50);
 		contentPanel.add(readerButton);
 		
 		
 		
-		frame.add(contentPanel,BorderLayout.CENTER);
+		frame.getContentPane().add(contentPanel,BorderLayout.CENTER);
 	}
 
 }

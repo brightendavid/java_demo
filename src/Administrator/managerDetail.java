@@ -23,8 +23,6 @@ public class managerDetail {
 	private NewspaperBorrowPanel bookBorrowPanel;
 	private Newspaper_Fafang newspaperfafang;
 	private ReaderInfoPanel readerPanel;
-	//private BookReturnPanel bookReturnPanel;
-	private JButton bookBorrowButton;
 	private JButton returnButton;
 	private JButton reloginButton;
 	
