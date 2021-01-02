@@ -38,25 +38,25 @@ public class paperDetail {
 //	contentPane.add(managerInfoPanel);
 		paperManagedetail.setContentPane(contentPane);
 
-		JLabel label1 = new JLabel("ÇëÑ¡ÔñÒÔÏÂÁ½¸ö¹¦ÄÜ");
+		JLabel label1 = new JLabel("è¯·é€‰æ‹©ä»¥ä¸‹ä¸¤ä¸ªåŠŸèƒ½");
 		label1.setHorizontalAlignment(SwingConstants.CENTER);
-		label1.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 25));
+		label1.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 25));
 		label1.setBounds(20, 30, 20, 50);
 		contentPane.add(label1);
 		
-		//Á½¸ö°´Å¥
-		changePaperButton = new JButton("±¨¿¯ÐÞ¸Ä");
+		//ä¸¤ä¸ªæŒ‰é’®
+		changePaperButton = new JButton("æŠ¥åˆŠä¿®æ”¹");
 		changePaperButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				paperManagedetail.dispose();
 				new ChangePaper();
 			}
 		});
-		changePaperButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		changePaperButton.setBounds(20, 331, 120, 50);
+		changePaperButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
+		changePaperButton.setBounds(20, 31, 120, 50);
 		contentPane.add(changePaperButton);
 //
-		deletePaperButton = new JButton("±¨¿¯É¾³ý");
+		deletePaperButton = new JButton("æŠ¥åˆŠåˆ é™¤");
 		deletePaperButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				paperManagedetail.dispose();
@@ -64,11 +64,11 @@ public class paperDetail {
 
 			}
 		});
-		deletePaperButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
+		deletePaperButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
 		deletePaperButton.setBounds(20, 331, 120, 50);
 		contentPane.add(deletePaperButton);
 	/*	
-		addPaperButton = new JButton("±¨¿¯Ìí¼Ó");
+		addPaperButton = new JButton("æŠ¥åˆŠæ·»åŠ ");
 		addPaperButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				paperManagedetail.dispose();
@@ -76,7 +76,7 @@ public class paperDetail {
 
 			}
 		});
-		addPaperButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
+		addPaperButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
 		addPaperButton.setBounds(20, 331, 120, 50);
 		contentPane.add(addPaperButton);
 	*/
