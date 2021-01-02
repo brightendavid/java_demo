@@ -51,7 +51,7 @@ public class managerEntrance {
 		contentPane.setLayout(null);
 		frame.setContentPane(contentPane);
 
-		JLabel numberLabel = new JLabel("number:");
+		JLabel numberLabel = new JLabel("¹¤ºÅ:");
 		numberLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		numberLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
 		numberLabel.setBounds(91, 35, 95, 40);

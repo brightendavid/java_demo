@@ -50,7 +50,7 @@ public class ReaderRegister {
 		nameTextField.setBounds(190, 26, 155, 21);
 		contentPane.add(nameTextField);
 
-		JLabel numberLabel = new JLabel("学号：");
+		JLabel numberLabel = new JLabel("账号：");
 		numberLabel.setBounds(82, 69, 54, 15);
 		contentPane.add(numberLabel);
 
@@ -126,7 +126,7 @@ public class ReaderRegister {
 				String verifyPassword = verifyPasswordField.getText();
 //输入合规性检验
 				if (name.equals("") || number.equals("")) {
-					JOptionPane.showMessageDialog(null, "姓名和学号必填，请继续输入", "提示", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "姓名和账号必填，请继续输入", "提示", JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
 				if (password.equals("") || verifyPassword.equals("")) {
@@ -134,14 +134,14 @@ public class ReaderRegister {
 					return;
 				}
 				if (name.length() > 4 || number.length() != 6) {
-					JOptionPane.showMessageDialog(null, "姓名或学号不符合规则，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "姓名或账号不符合规则，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
 				int numberInt = 0;
 				try {
 					numberInt = Integer.valueOf(number);
 				} catch (NumberFormatException e2) {
-					JOptionPane.showMessageDialog(null, "姓名或学号不符合规则，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "姓名或账号不符合规则，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
 				String sexRegexString = "^男|女$";
@@ -163,7 +163,7 @@ public class ReaderRegister {
 				}
 
 				if (DBUtils.checkReaderNumber(numberInt)) {
-					JOptionPane.showMessageDialog(null, "学号已注册，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "账号已注册，请重新输入", "通知", JOptionPane.INFORMATION_MESSAGE);
 					numberTextField.setText("");
 					return;
 				}

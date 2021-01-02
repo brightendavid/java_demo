@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Administrator.managerDetail;
+
 
 public class paperDetail {
 	
@@ -39,9 +41,10 @@ public class paperDetail {
 		paperManagedetail.setContentPane(contentPane);
 
 		JLabel label1 = new JLabel("请选择以下两个功能");
+		label1.setBackground(Color.CYAN);
 		label1.setHorizontalAlignment(SwingConstants.CENTER);
 		label1.setFont(new Font("微软雅黑", Font.PLAIN, 25));
-		label1.setBounds(20, 30, 20, 50);
+		label1.setBounds(159, 172, 290, 50);
 		contentPane.add(label1);
 		
 		//两个按钮
@@ -53,7 +56,7 @@ public class paperDetail {
 			}
 		});
 		changePaperButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		changePaperButton.setBounds(20, 31, 120, 50);
+		changePaperButton.setBounds(199, 375, 209, 50);
 		contentPane.add(changePaperButton);
 //
 		deletePaperButton = new JButton("报刊删除");
@@ -65,8 +68,19 @@ public class paperDetail {
 			}
 		});
 		deletePaperButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		deletePaperButton.setBounds(20, 331, 120, 50);
+		deletePaperButton.setBounds(199, 288, 209, 50);
 		contentPane.add(deletePaperButton);
+		
+		JButton btnReturn = new JButton("\u8FD4\u56DE");
+		btnReturn.setFont(new Font("微软雅黑", Font.PLAIN, 16));
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				paperManagedetail.dispose();
+				new managerDetail();
+			}
+		});
+		btnReturn.setBounds(467, 443, 138, 50);
+		contentPane.add(btnReturn);
 	/*	
 		addPaperButton = new JButton("报刊添加");
 		addPaperButton.addActionListener(new ActionListener() {

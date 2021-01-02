@@ -27,24 +27,18 @@ public class deletePaper{
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPanel.setLayout(null);
-		deletePaperframe.setContentPane(contentPanel);//Ãæ°å
-		
-		JLabel label1=new JLabel("±¨¿¯É¾³ý");
-		label1.setHorizontalAlignment(SwingConstants.CENTER);
-		label1.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 25));
-		label1.setBounds(53, 20, 329, 50);
-		contentPanel.add(label1);
+		deletePaperframe.setContentPane(contentPanel);
 		
 		JLabel label2=new JLabel("ÊäÈëÒªÉ¾³ýµÄ±¨¿¯ºÅ");
 		label2.setHorizontalAlignment(SwingConstants.LEFT);
 		label2.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		label2.setBounds(20,50,200,50);
+		label2.setBounds(27,13,200,50);
 		contentPanel.add(label2);
 		
 		//ÊäÈëÒªÉ¾³ý±¨¿¯µÄ±¨¿¯ºÅ
 		JTextField paperNo=new JTextField();
 		paperNo.setColumns(20);
-		paperNo.setBounds(20,100, 200, 50);
+		paperNo.setBounds(14,77, 200, 50);
 		contentPanel.add(paperNo);
 		
 		//É¾³ýÖ´ÐÐÃüÁî°´Å¥
@@ -65,7 +59,7 @@ public class deletePaper{
 			}
 		});
 		deleteButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		deleteButton.setBounds(250, 100, 100, 50);
+		deleteButton.setBounds(250, 74, 100, 50);
 		contentPanel.add(deleteButton);
 		
 		//·µ»Ø°´Å¥
@@ -77,7 +71,7 @@ public class deletePaper{
 			}
 		});
 		returnButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-		returnButton.setBounds(250, 200, 100, 50);
+		returnButton.setBounds(250, 161, 100, 50);
 		contentPanel.add(returnButton);
 		
 		deletePaperframe.setVisible(true);

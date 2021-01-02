@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import newspaper.paperDetail;
 import reader.NewspaperBorrowPanel;
 import userDataManage.ReaderInfoPanel;
 
@@ -96,7 +97,7 @@ public class managerDetail {
 		}
 	});
 	returnButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-	returnButton.setBounds(298, 335, 141, 47);
+	returnButton.setBounds(241, 336, 141, 47);
 	contentPane.add(returnButton);
 //此处是邮局管理系统不需要使用的功能
 	/*bookReturnButton = new JButton("图书归还");
@@ -122,7 +123,7 @@ public class managerDetail {
 		}
 	});
 	reloginButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-	reloginButton.setBounds(463, 331, 120, 50);
+	reloginButton.setBounds(453, 332, 120, 50);
 	contentPane.add(reloginButton);
 	
 	JButton button = new JButton("报刊入库管理");
@@ -132,11 +133,20 @@ public class managerDetail {
 				
 		}
 	});
-	button.setBounds(150, 336, 134, 47);
+	button.setBounds(37, 336, 134, 47);
 	contentPane.add(button);
 	
 	JButton button_1 = new JButton("报刊数据管理");
-	button_1.setBounds(37, 394, 224, 77);
+	button_1.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			frmManagerdetail.dispose();
+			new paperDetail();
+		}
+	});
+	button_1.setBounds(27, 394, 224, 77);
 	contentPane.add(button_1);
 	
 	JButton button_2 = new JButton("客户数据管理");
@@ -148,7 +158,7 @@ public class managerDetail {
 			contentPane.repaint();
 		}
 	});
-	button_2.setBounds(298, 394, 275, 27);
+	button_2.setBounds(311, 394, 255, 37);
 	contentPane.add(button_2);
 	
 	JButton button_3 = new JButton("报刊发放管理");//需要改为发放有关的字段
@@ -160,7 +170,7 @@ public class managerDetail {
 			contentPane.repaint();
 		}
 	});
-	button_3.setBounds(318, 434, 255, 37);
+	button_3.setBounds(311, 434, 255, 37);
 	contentPane.add(button_3);
 	contentPane.repaint();
 }

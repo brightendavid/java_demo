@@ -169,7 +169,7 @@ public class Newspaper_Fafang extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				String num= numtextfield.getText();
 				if (num.equals("")) {
-					JOptionPane.showMessageDialog(null, "请输入reader的序号", "提示", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "请输入reader的账号", "提示", JOptionPane.PLAIN_MESSAGE);
 					return;
 				}
 				Vector<Vector<String>> data = DBUtils.getreadernumInfo(num);

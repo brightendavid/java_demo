@@ -44,7 +44,7 @@ public class ReaderEntrance {
 		contentPane.setLayout(null);
 		frame.setContentPane(contentPane);
 
-		JLabel numberLabel = new JLabel("电话：");
+		JLabel numberLabel = new JLabel("账号：");
 		numberLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		numberLabel.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		numberLabel.setBounds(91, 35, 60, 40);
@@ -87,7 +87,7 @@ public class ReaderEntrance {
 				String numberStr = numberTextField.getText().trim();
 				String password = String.valueOf(passwordTextField.getPassword());//传参
 				if (password.equals("") || numberStr.equals("")) {
-					JOptionPane.showMessageDialog(null, "请输入学号和密码", "通知", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "请输入账号和密码", "通知", JOptionPane.INFORMATION_MESSAGE);
 					System.out.println("---empty number or password!---");
 					return;
 				}
@@ -96,7 +96,7 @@ public class ReaderEntrance {
 					number = Integer.parseInt(numberStr);
 					readerNumber = number;
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "请输入合法学号", "通知", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "请输入合法账号", "通知", JOptionPane.INFORMATION_MESSAGE);
 					System.out.println("---invalid number!---");
 					return;
 				}
@@ -107,7 +107,7 @@ public class ReaderEntrance {
 					System.out.println("---login success!---");
 					new ReaderDetail();
 				} else {
-					JOptionPane.showMessageDialog(null, "学号或者密码不正确", "通知", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "账号或者密码不正确", "通知", JOptionPane.INFORMATION_MESSAGE);
 				}
 
 			}

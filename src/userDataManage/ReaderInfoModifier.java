@@ -43,7 +43,7 @@ public class ReaderInfoModifier {
 	 * Create the dialog.
 	 */
 	public ReaderInfoModifier() {
-		int number = ReaderEntrance.readerNumber;
+		int number = ReaderInfoPanel.number;
 		Map<String, Object> readerInfo = DBUtils.getStudentInfo(number);
 
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

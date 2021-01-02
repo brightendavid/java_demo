@@ -64,7 +64,7 @@ public class ReaderInfoModifier {
 		nameInfoLabel.setBounds(76, 27, 60, 40);
 		infoPanel.add(nameInfoLabel);
 
-		JLabel nunberLabel = new JLabel("Ñ§ºÅ£º");
+		JLabel nunberLabel = new JLabel("ÕËºÅ£º");
 		nunberLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
 		nunberLabel.setBounds(22, 94, 60, 40);
 		infoPanel.add(nunberLabel);
@@ -114,10 +114,10 @@ public class ReaderInfoModifier {
 		emailInfoTextField.setBounds(280, 161, 129, 40);
 		infoPanel.add(emailInfoTextField);
 //¼ÓÈë×¡Ö·
-		JLabel addressLabel = new JLabel("×¡Ö·£º");
+		/*JLabel addressLabel = new JLabel("×¡Ö·£º");
 		addressLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
 		addressLabel.setBounds(220, 200, 60, 40);
-		infoPanel.add(addressLabel);
+		infoPanel.add(addressLabel);*/
 
 		JTextField addressInfoTextField = new JTextField(String.valueOf(readerInfo.get("email")));
 		addressInfoTextField.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 14));

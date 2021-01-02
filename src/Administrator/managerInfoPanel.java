@@ -39,7 +39,7 @@ public class managerInfoPanel extends JPanel {
 		nameLabel.setBounds(103, 137, 60, 40);
 		add(nameLabel);
 
-		JLabel nunberLabel = new JLabel("Ñ§ºÅ£º");
+		JLabel nunberLabel = new JLabel("¹¤ºÅ£º");
 		nunberLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
 		nunberLabel.setBounds(341, 137, 60, 40);
 		add(nunberLabel);
