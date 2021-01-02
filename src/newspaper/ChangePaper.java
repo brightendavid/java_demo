@@ -20,143 +20,143 @@ import java.awt.Font;
 		private JPanel contentPanel;
 		
 		public ChangePaper() {
-			changePaperframe = new JFrame("ĞŞ¸Ä");
+			changePaperframe = new JFrame("æŠ¥åˆŠä¿®æ”¹");
 			changePaperframe.setBounds(100, 100, 450, 300);
-			changePaperframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//¿ò¼Ü
+			changePaperframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//æ¡†æ¶
 			
 			contentPanel = new JPanel();
 			contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 			contentPanel.setLayout(null);
-			changePaperframe.setContentPane(contentPanel);//Ãæ°å
+			changePaperframe.setContentPane(contentPanel);//é¢æ¿
 			
-			JLabel label1=new JLabel("±¨¿¯ĞŞ¸Ä");
+			JLabel label1=new JLabel("è¾“å…¥è¦ä¿®æ”¹çš„æŠ¥åˆŠå·ï¼š");
 			label1.setHorizontalAlignment(SwingConstants.CENTER);
-			label1.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 25));
-			label1.setBounds(53, 20, 329, 50);
+			label1.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 25));
+			label1.setBounds(20, 20, 30, 50);
 			contentPanel.add(label1);
 			
-			JLabel label2=new JLabel("ÊäÈëÒªĞŞ¸ÄµÄ±¨¿¯ºÅ");
+			JLabel label2=new JLabel("è¾“å…¥å±æ€§å€¼ï¼š");
 			label2.setHorizontalAlignment(SwingConstants.LEFT);
-			label2.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-			label2.setBounds(20,50,200,50);
+			label2.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
+			label2.setBounds(20,50,30,50);
 			contentPanel.add(label2);
 			
-			//ĞŞ¸ÄËÄ¸öÊôĞÔ£¬name¡¢writer¡¢press¡¢time
+			//ä¿®æ”¹å››ä¸ªå±æ€§ï¼Œnameã€writerã€pressã€time
 			
-			//ÊäÈëÒªĞŞ¸Ä±¨¿¯µÄ±¨¿¯ºÅ
+			//è¾“å…¥è¦ä¿®æ”¹æŠ¥åˆŠçš„æŠ¥åˆŠå·
 			JTextField paperNo=new JTextField();
 			paperNo.setColumns(20);
-			paperNo.setBounds(20,100, 200, 50);
+			paperNo.setBounds(90,20, 30, 50);
 			contentPanel.add(paperNo);
 			
-			//ÊäÈëĞŞ¸ÄµÃÊôĞÔÖµ
+			//è¾“å…¥ä¿®æ”¹å¾—å±æ€§å€¼
 			JTextField paperChange=new JTextField();
 			paperChange.setColumns(20);
-			paperChange.setBounds(20,100, 200, 50);
+			paperChange.setBounds(90,50, 30, 50);
 			contentPanel.add(paperChange);
 			
-			//1.ĞŞ¸Äname
-			JButton changeNameButton=new JButton("±¨¿¯ÃûĞŞ¸Ä");
+			//1.ä¿®æ”¹name
+			JButton changeNameButton=new JButton("æŠ¥åˆŠåä¿®æ”¹");
 			
 			changeNameButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					String pno = paperNo.getText();
 					String pContent = paperChange.getText();
 					if (pno.equals("")) {
-						JOptionPane.showMessageDialog(null, "ÇëÊäÈë±¨¿¯ºÅ»ò±¨¿¯ºÅµÄÒ»²¿·Ö", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥æŠ¥åˆŠå·æˆ–æŠ¥åˆŠå·çš„ä¸€éƒ¨åˆ†", "æç¤º", JOptionPane.WARNING_MESSAGE);
 						return;
 					}
 					boolean f = DBUtils.changePaperName(pno, pContent);
 					if (f) 
-						JOptionPane.showMessageDialog(null, "±¨¿¯ÃûĞŞ¸Ä³É¹¦£¡", "ÌáÊ¾",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æŠ¥åˆŠåä¿®æ”¹æˆåŠŸï¼", "æç¤º",JOptionPane.PLAIN_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(null, "±¨¿¯ÃûĞŞ¸ÄÊ§°Ü£¡", "ÌáÊ¾",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æŠ¥åˆŠåä¿®æ”¹å¤±è´¥ï¼", "æç¤º",JOptionPane.PLAIN_MESSAGE);
 				}
 			});
-			changeNameButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-			changeNameButton.setBounds(250, 100, 100, 50);
+			changeNameButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
+			changeNameButton.setBounds(20, 100, 40, 50);
 			contentPanel.add(changeNameButton);
 
 
-			//ĞŞ¸Äwriter
-			JButton changeWriterButton=new JButton("±¨¿¯×÷ÕßĞŞ¸Ä");
+			//ä¿®æ”¹writer
+			JButton changeWriterButton=new JButton("æŠ¥åˆŠä½œè€…ä¿®æ”¹");
 			
 			changeWriterButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					String pno = paperNo.getText();
 					String pContent = paperChange.getText();
 					if (pno.equals("")) {
-						JOptionPane.showMessageDialog(null, "ÇëÊäÈë±¨¿¯ºÅ»ò±¨¿¯ºÅµÄÒ»²¿·Ö", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥æŠ¥åˆŠå·æˆ–æŠ¥åˆŠå·çš„ä¸€éƒ¨åˆ†", "æç¤º", JOptionPane.WARNING_MESSAGE);
 						return;
 					}
 					boolean f = DBUtils.changePaperWriter(pno, pContent);
 					if (f) 
-						JOptionPane.showMessageDialog(null, "±¨¿¯×÷ÕßĞŞ¸Ä³É¹¦£¡", "ÌáÊ¾",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æŠ¥åˆŠä½œè€…ä¿®æ”¹æˆåŠŸï¼", "æç¤º",JOptionPane.PLAIN_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(null, "±¨¿¯×÷ÕßĞŞ¸ÄÊ§°Ü£¡", "ÌáÊ¾",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æŠ¥åˆŠä½œè€…ä¿®æ”¹å¤±è´¥ï¼", "æç¤º",JOptionPane.PLAIN_MESSAGE);
 				}
 			});
-			changeWriterButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-			changeWriterButton.setBounds(250, 100, 100, 50);
+			changeWriterButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
+			changeWriterButton.setBounds(90, 100, 40, 50);
 			contentPanel.add(changeWriterButton);
 			
 
-			//ĞŞ¸Äpress
-			JButton changePressButton=new JButton("±¨¿¯³ö°æÉçĞŞ¸Ä");
+			//ä¿®æ”¹press
+			JButton changePressButton=new JButton("æŠ¥åˆŠå‡ºç‰ˆç¤¾ä¿®æ”¹");
 			
 			changePressButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					String pno = paperNo.getText();
 					String pContent = paperChange.getText();
 					if (pno.equals("")) {
-						JOptionPane.showMessageDialog(null, "ÇëÊäÈë±¨¿¯ºÅ»ò±¨¿¯ºÅµÄÒ»²¿·Ö", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥æŠ¥åˆŠå·æˆ–æŠ¥åˆŠå·çš„ä¸€éƒ¨åˆ†", "æç¤º", JOptionPane.WARNING_MESSAGE);
 						return;
 					}
 					boolean f = DBUtils.changePaperPress(pno, pContent);
 					if (f) 
-						JOptionPane.showMessageDialog(null, "±¨¿¯³ö°æÉçĞŞ¸Ä³É¹¦£¡", "ÌáÊ¾",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æŠ¥åˆŠå‡ºç‰ˆç¤¾ä¿®æ”¹æˆåŠŸï¼", "æç¤º",JOptionPane.PLAIN_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(null, "±¨¿¯³ö°æÉçĞŞ¸ÄÊ§°Ü£¡", "ÌáÊ¾",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æŠ¥åˆŠå‡ºç‰ˆç¤¾ä¿®æ”¹å¤±è´¥ï¼", "æç¤º",JOptionPane.PLAIN_MESSAGE);
 				}
 			});
-			changePressButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-			changePressButton.setBounds(250, 100, 100, 50);
+			changePressButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
+			changePressButton.setBounds(140, 100, 40, 50);
 			contentPanel.add(changePressButton);
 			
 
-			//ĞŞ¸Ätime
-			JButton changeTimeButton=new JButton("±¨¿¯³ö°æÊ±¼äĞŞ¸Ä");
+			//ä¿®æ”¹time
+			JButton changeTimeButton=new JButton("æŠ¥åˆŠå‡ºç‰ˆæ—¶é—´ä¿®æ”¹");
 			
 			changeTimeButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					String pno = paperNo.getText();
 					String pContent = paperChange.getText();
 					if (pno.equals("")) {
-						JOptionPane.showMessageDialog(null, "ÇëÊäÈë±¨¿¯ºÅ»ò±¨¿¯ºÅµÄÒ»²¿·Ö", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥æŠ¥åˆŠå·æˆ–æŠ¥åˆŠå·çš„ä¸€éƒ¨åˆ†", "æç¤º", JOptionPane.WARNING_MESSAGE);
 						return;
 					}
 					boolean f = DBUtils.changePapertime(pno, pContent);
 					if (f) 
-						JOptionPane.showMessageDialog(null, "±¨¿¯³ö°æÊ±¼äĞŞ¸Ä³É¹¦£¡", "ÌáÊ¾",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æŠ¥åˆŠå‡ºç‰ˆæ—¶é—´ä¿®æ”¹æˆåŠŸï¼", "æç¤º",JOptionPane.PLAIN_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(null, "±¨¿¯³ö°æÊ±¼äĞŞ¸ÄÊ§°Ü£¡", "ÌáÊ¾",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æŠ¥åˆŠå‡ºç‰ˆæ—¶é—´ä¿®æ”¹å¤±è´¥ï¼", "æç¤º",JOptionPane.PLAIN_MESSAGE);
 				}
 			});
-			changeTimeButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-			changeTimeButton.setBounds(250, 100, 100, 50);
+			changeTimeButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
+			changeTimeButton.setBounds(20, 140, 40, 50);
 			contentPanel.add(changeTimeButton);
 			
 			
-			//·µ»Ø°´Å¥
-			JButton returnButton =new JButton("·µ»Ø");
+			//è¿”å›æŒ‰é’®
+			JButton returnButton =new JButton("è¿”å›");
 			returnButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					changePaperframe.dispose();
 					new paperDetail();
 				}
 			});
-			returnButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
-			returnButton.setBounds(250, 200, 100, 50);
+			returnButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 20));
+			returnButton.setBounds(90, 140, 40, 50);
 			contentPanel.add(returnButton);
 			
 			changePaperframe.setVisible(true);

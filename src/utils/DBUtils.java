@@ -35,7 +35,7 @@ public class DBUtils {
 		}
 		return false;
 	}
-//new Adminenter Èë¿Ú
+//new Adminenter å…¥å£
 	public static boolean verifyAdmin(int number, String password,String name) {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -44,7 +44,7 @@ public class DBUtils {
 			conn = JDBCUtils.getConnection();
 
 			String sql = "select number, password ,name from admin where number = ? and password = ?";
-			//±íÊ¾Êı¾İ¿â²åĞğ¸ñÊ½
+			//è¡¨ç¤ºæ•°æ®åº“æ’å™æ ¼å¼
 			st = conn.prepareStatement(sql);
 			st.setInt(1, number);
 			st.setString(2, password);
@@ -192,8 +192,8 @@ public class DBUtils {
 		return false;
 	}
 	
-	//new ÔÚNewspaperµ¼ÈëÊ±ºòÊ¹ÓÃµÄ·½·¨ ±¨¿¯Èë¿â
-	public static boolean checkNews_Number(String name) {  //ÅĞ¶Ï±¨¿¯ÊÇ·ñ´æÔÚ,ºÏÀíĞÔ
+	//new åœ¨Newspaperå¯¼å…¥æ—¶å€™ä½¿ç”¨çš„æ–¹æ³• æŠ¥åˆŠå…¥åº“
+	public static boolean checkNews_Number(String name) {  //åˆ¤æ–­æŠ¥åˆŠæ˜¯å¦å­˜åœ¨,åˆç†æ€§
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -245,7 +245,7 @@ public class DBUtils {
 			JDBCUtils.release(conn, st, rs);
 		}
 	}
-	//ĞÂ½¨·½·¨  Ìí¼ÓÊı¾İNews_paper
+	//æ–°å»ºæ–¹æ³•  æ·»åŠ æ•°æ®News_paper
 	public static boolean registerNEWS(String  name,String publish_press,String publish_Time,int  total,int price, String author) {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -277,7 +277,7 @@ public class DBUtils {
 	}
 	
 	
-// ÒÔÏÂ´úÂë  £º·µ»ØÒ»¸ö±íÊı¾İÔÚÖÆ×÷±íÊ±ºòÓÃµ½£¬ÔÚNewspaperBorrowedTableModelÖĞÊ¹ÓÃ£¬´«Êädata ±äÁ¿
+// ä»¥ä¸‹ä»£ç   ï¼šè¿”å›ä¸€ä¸ªè¡¨æ•°æ®åœ¨åˆ¶ä½œè¡¨æ—¶å€™ç”¨åˆ°ï¼Œåœ¨NewspaperBorrowedTableModelä¸­ä½¿ç”¨ï¼Œä¼ è¾“data å˜é‡
 	public static Vector<Vector<String>> getAllBookInfos() {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -300,7 +300,7 @@ public class DBUtils {
 				}
 				resultData.add(rowData);
 			}
-			return resultData;//·µ»ØÒ»¸ö±íÊı¾İÔÚÖÆ×÷±íÊ±ºòÓÃµ½£¬ÔÚNewspaperBorrowedTableModelÖĞÊ¹ÓÃ£¬´«Êädata ±äÁ¿
+			return resultData;//è¿”å›ä¸€ä¸ªè¡¨æ•°æ®åœ¨åˆ¶ä½œè¡¨æ—¶å€™ç”¨åˆ°ï¼Œåœ¨NewspaperBorrowedTableModelä¸­ä½¿ç”¨ï¼Œä¼ è¾“data å˜é‡
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -332,7 +332,7 @@ public class DBUtils {
 				}
 				resultData.add(rowData);
 			}
-			return resultData;//·µ»ØÒ»¸ö±íÊı¾İÔÚÖÆ×÷±íÊ±ºòÓÃµ½£¬ÔÚNewspaperBorrowedTableModelÖĞÊ¹ÓÃ£¬´«Êädata ±äÁ¿
+			return resultData;//è¿”å›ä¸€ä¸ªè¡¨æ•°æ®åœ¨åˆ¶ä½œè¡¨æ—¶å€™ç”¨åˆ°ï¼Œåœ¨NewspaperBorrowedTableModelä¸­ä½¿ç”¨ï¼Œä¼ è¾“data å˜é‡
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -341,7 +341,7 @@ public class DBUtils {
 		}
 	}
 	
-	public static Vector<Vector<String>> getBookInfo(String bookName) {//²éÑ¯ÊéÃû
+	public static Vector<Vector<String>> getBookInfo(String bookName) {//æŸ¥è¯¢ä¹¦å
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -374,7 +374,7 @@ public class DBUtils {
 		}
 	}
 	
-	public static Vector<Vector<String>> getreadernumInfo(String num) {//²éÑ¯ÈËÃûµÄºÅÂë
+	public static Vector<Vector<String>> getreadernumInfo(String num) {//æŸ¥è¯¢äººåçš„å·ç 
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -408,7 +408,7 @@ public class DBUtils {
 		}
 	}
 	
-	public static boolean borrowOneBook(int number, String isbn) {//¶©ÔÄÒ»±¾
+	public static boolean borrowOneBook(int number, String isbn) {//è®¢é˜…ä¸€æœ¬
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -427,7 +427,7 @@ public class DBUtils {
 			st.setString(1, isbn);
 			int result2 = st.executeUpdate();
 			
-			//»¹Òª¸Ä   Ôö¼ÓhistoryµÄ¼ÇÂ¼  ²»¼ÇÂ¼¹é»¹Ê±¼ä                 ´íÁË
+			//è¿˜è¦æ”¹   å¢åŠ historyçš„è®°å½•  ä¸è®°å½•å½’è¿˜æ—¶é—´                 é”™äº†
 			/*String sql3 = "insert into borrow_history(reader_number, isbn, borrow_time) " + "values (?,		 ?, now())";
 			//String sql3 = "insert into borrow(reader_number, isbn, borrow_time) " + "values (?,		 ?,	   now())";
 			st = conn.prepareStatement(sql3);
@@ -447,13 +447,13 @@ public class DBUtils {
 	}
 	
 	///////
-	public static boolean jiechu_borrowOneBook(int number, String isbn) {//½â³ı¶©ÔÄ
+	public static boolean jiechu_borrowOneBook(int number, String isbn) {//è§£é™¤è®¢é˜…
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		
 		int isbn2=Integer.valueOf(isbn);
-		//Ê±¼äÀàĞÍ
+		//æ—¶é—´ç±»å‹
 		java.util.Date date=new java.util.Date();
 		java.sql.Date sqlDate=new java.sql.Date(date.getTime());
 		java.sql.Timestamp sqlTime=new java.sql.Timestamp(date.getTime());
@@ -464,19 +464,19 @@ public class DBUtils {
 			conn = JDBCUtils.getConnection();
 			
 		
-			String sql0= "select borrow_time into Timestamp from borrow where isbn=? and number =?";//²éÑ¯½èÔÄÊ±¼ä
+			String sql0= "select borrow_time into Timestamp from borrow where isbn=? and number =?";//æŸ¥è¯¢å€Ÿé˜…æ—¶é—´
 			st = conn.prepareStatement(sql0);
 			st.setInt(1, number);
 			st.setString(2, isbn);
 	
 			String sql = "delete from borrow "+
-					"where isbn=? and reader_number=?";//É¾³ı¼ÇÂ¼Íê³É
+					"where isbn=? and reader_number=?";//åˆ é™¤è®°å½•å®Œæˆ
 			st = conn.prepareStatement(sql);
 			st.setInt(1, isbn2);
 			st.setInt(2, number);
 			int result = st.executeUpdate();
 	
-			//Ôö¼Óhistory¼ÇÂ¼£¬½èÔÄµÄ¼ÇÂ¼
+			//å¢åŠ historyè®°å½•ï¼Œå€Ÿé˜…çš„è®°å½•
 			String sql1 = "insert into borrow_history(reader_number, isbn, borrow_time,return_time) " + "values (?,		 ?,?,   now())";
 			st = conn.prepareStatement(sql1);
 			st.setInt(1, number);
@@ -484,7 +484,7 @@ public class DBUtils {
 			st.setTimestamp(3, sqlTime);
 			int result1 = st.executeUpdate();
 
-			String sql2 = "update book set remain = remain + 1 where isbn = ?";//Ïà¹ØµÄ¼ÇÂ¼Ôö¼Ó1±¾
+			String sql2 = "update book set remain = remain + 1 where isbn = ?";//ç›¸å…³çš„è®°å½•å¢åŠ 1æœ¬
 			st = conn.prepareStatement(sql2);
 			st.setString(1, isbn);
 			int result2 = st.executeUpdate();
@@ -610,7 +610,7 @@ public class DBUtils {
 			st.setInt(1, number);
 			st.setString(2, isbn);
 			int result3 = st.executeUpdate();*/
-			//Ìí¼ÓÊı¾İ   »áÓĞÒ»µãÎÊÌâ
+			//æ·»åŠ æ•°æ®   ä¼šæœ‰ä¸€ç‚¹é—®é¢˜
 			//String sql1 = "insert into borrow_history(reader_number, isbn, borrow_time,return_time) " + "values (?,		 ?,?,   now())";
 			String sql2 = "insert into borrow_history(reader_number,isbn,borrow_time) select reader_number, isbn, borrow_time from borrow where reader_number = ? and isbn = ?";
 			st = conn.prepareStatement(sql2);
@@ -618,7 +618,7 @@ public class DBUtils {
 			st.setString(2, isbn);
 			int result2 = st.executeUpdate();
 			
-			//É¾³ıborrow±íµÄ¼ÇÂ¼
+			//åˆ é™¤borrowè¡¨çš„è®°å½•
 			String sql = "delete from borrow where reader_number = ? and isbn = ?";
 			st = conn.prepareStatement(sql);
 			st.setInt(1, number);
@@ -645,4 +645,120 @@ public class DBUtils {
 			JDBCUtils.release(conn, st, rs);
 		}
 	}
+
+    //åˆ é™¤æŠ¥åˆŠ	
+	public static boolean deletePaper(String PNo) {
+		Connection conn=null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		
+		try {
+			conn=JDBCUtils.getConnection();
+			String sql="delete from book where isbn =?";
+			st=conn.prepareStatement(sql);
+			st.setString(1, PNo);
+			int result=st.executeUpdate();
+			return result!=0;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
+	
+	//æŠ¥åˆŠåä¿®æ”¹
+	public static boolean changePaperName(String PNo, String Pname) {
+		Connection conn=null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		
+		try {
+			conn=JDBCUtils.getConnection();
+			
+			String sql="update book set name = ? where isbn = ?";
+			st=conn.prepareStatement(sql);
+			st.setString(1, Pname);
+			st.setString(2, PNo);
+			int result=st.executeUpdate();
+			return result!=0;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
+	//æŠ¥åˆŠä½œè€…ä¿®æ”¹
+	public static boolean changePaperWriter(String PNo, String Pwriter) {
+		Connection conn=null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		
+		try {
+			conn=JDBCUtils.getConnection();
+			
+			String sql="update book set book_writer = ? where isbn = ?";
+			st=conn.prepareStatement(sql);
+			st.setString(1, Pwriter);
+			st.setString(2, PNo);
+			int result=st.executeUpdate();
+			return result!=0;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
+	//æŠ¥åˆŠå‡ºç‰ˆç¤¾ä¿®æ”¹
+	public static boolean changePaperPress(String PNo, String Ppress) {
+		Connection conn=null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		
+		try {
+			conn=JDBCUtils.getConnection();
+			
+			String sql="update book set publish_press = ? where isbn = ?";
+			st=conn.prepareStatement(sql);
+			st.setString(1, Ppress);
+			st.setString(2, PNo);
+			int result=st.executeUpdate();
+			return result!=0;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
+	//æŠ¥åˆŠå‡ºç‰ˆæ—¶é—´ä¿®æ”¹
+		public static boolean changePapertime(String PNo, String Ptime) {
+			Connection conn=null;
+			PreparedStatement st=null;
+			ResultSet rs=null;
+			
+			try {
+				conn=JDBCUtils.getConnection();
+				
+				String sql="update book set publish_time = ? where isbn = ?";
+				st=conn.prepareStatement(sql);
+				st.setString(1, Ptime);
+				st.setString(2, PNo);
+				int result=st.executeUpdate();
+				return result!=0;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}finally {
+				JDBCUtils.release(conn, st, rs);
+			}
+		}
+		
 }
