@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
@@ -15,7 +16,6 @@ import javax.swing.border.LineBorder;
 import reader.ReaderEntrance;
 import utils.DBUtils;
 import javax.swing.JTextField;
-import javax.swing.JTable;
 
 public class ReaderInfoPanel extends JPanel {
 
@@ -44,7 +44,7 @@ public class ReaderInfoPanel extends JPanel {
 
 		setLayout(null);
 
-		JLabel titleLabel = new JLabel("ª∂”≠Ω¯»Î±®øØ∂©‘ƒπ‹¿ÌœµÕ≥");
+		JLabel titleLabel = new JLabel("\u7BA1\u7406\u5458\u7AEF\u53E3\u4FEE\u6539\u7528\u6237\u4FE1\u606F");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 25));
 		titleLabel.setBounds(111, 23, 319, 40);
@@ -119,17 +119,18 @@ public class ReaderInfoPanel extends JPanel {
 			}
 		});
 		infoModifyButton.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 20));
-		infoModifyButton.setBounds(52, 241, 162, 50);
+		infoModifyButton.setBounds(37, 241, 162, 50);
 		add(infoModifyButton);
 
 		JButton passwordModifyButton = new JButton("–ﬁ∏ƒ√‹¬Î");
 		passwordModifyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ReaderPasswordModifier();
+				
 			}
 		});
 		passwordModifyButton.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 20));
-		passwordModifyButton.setBounds(327, 241, 168, 50);
+		passwordModifyButton.setBounds(224, 241, 168, 50);
 		add(passwordModifyButton);
 		
 		
@@ -162,6 +163,22 @@ public class ReaderInfoPanel extends JPanel {
 		JLabel label_1 = new JLabel("\u5B66\u53F7");
 		label_1.setBounds(38, 194, 72, 18);
 		add(label_1);
+		
+		JButton button_1 = new JButton("÷ÿ÷√√‹¬Î");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(DBUtils.chongzhi_Password(number)){
+					JOptionPane.showMessageDialog(null, "÷ÿ÷√√‹¬Î≥…π¶", "Ã· æ", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "÷ÿ÷√√‹¬Î ß∞‹£¨«Î÷ÿ ‘", "Ã· æ", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
+			}
+		});
+		button_1.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 20));
+		button_1.setBounds(406, 241, 130, 50);
+		add(button_1);
 		
 		
 		

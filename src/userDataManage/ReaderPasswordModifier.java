@@ -103,7 +103,7 @@ public class ReaderPasswordModifier {
 
 						int n = JOptionPane.showConfirmDialog(null, "确认修改吗?", "提示", JOptionPane.YES_NO_OPTION);
 						if (n == JOptionPane.YES_OPTION) {
-							int number = ReaderEntrance.readerNumber;
+							int number = ReaderInfoPanel.number;
 							String nowPassword = DBUtils.getNowPassword(number);
 							if (!nowPassword.equals(oldPassword)) {
 								JOptionPane.showMessageDialog(null, "密码校验失败，请重新输入", "提示",

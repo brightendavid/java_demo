@@ -145,7 +145,29 @@ public class DBUtils {
 			JDBCUtils.release(conn, st, rs);
 		}
 	}
+	
+	public static boolean chongzhi_Password(int number) {
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
 
+		try {
+			conn = JDBCUtils.getConnection();
+
+			String sql = "update reader set password =123456  where number = ?";
+			st = conn.prepareStatement(sql);
+			st.setInt(1, number);
+
+			int result = st.executeUpdate();
+			return result != 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			JDBCUtils.release(conn, st, rs);
+		}
+	}
+	
 	public static String getNowPassword(int number) {
 		Connection conn = null;
 		PreparedStatement st = null;
