@@ -350,7 +350,7 @@ public class DBUtils {
 		try {
 			conn = JDBCUtils.getConnection();
 
-			String sql = "select isbn, name, book_writer, publish_press, publish_time, total, remain from book "
+			String sql = "select name, isbn, book_writer, publish_press, publish_time, total, remain from book "
 					+ "where name like ?";
 			st = conn.prepareStatement(sql);
 			st.setString(1, "%" + bookName + "%");

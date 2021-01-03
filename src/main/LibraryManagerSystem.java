@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
 import Administrator.managerEntrance;
 import reader.ReaderEntrance;
 import java.awt.event.ActionListener;
@@ -19,8 +20,8 @@ import java.awt.Color;
 public class LibraryManagerSystem {
 
 	private JFrame frame;
-
 	private JPanel contentPanel;
+
 
 	/**
 	 * Launch the application.
@@ -65,6 +66,7 @@ public class LibraryManagerSystem {
 		
 //界面设计开始界面
 		frame = new JFrame("浙江工商大学图书馆管理系统");//窗口
+		frame.setTitle("\u90AE\u5C40\u62A5\u520A\u7BA1\u7406\u7CFB\u7EDF");
 		frame.setAlwaysOnTop(true);
 		frame.setBackground(new java.awt.Color(64, 64, 64));
 		frame.setBounds(200, 200, 450, 500);
@@ -84,7 +86,7 @@ public class LibraryManagerSystem {
 //		frame.setContentPane(contentPanel);
 
 	//	JLabel titleLabel = new JLabel("浙江工商大学图书馆管理系统");
-		 JLabel titleLabel = new JLabel("浙江工商大学图书馆管理系统");
+		 JLabel titleLabel = new JLabel("\u90AE\u5C40\u62A5\u520A\u7BA1\u7406\u7CFB\u7EDF");
 	     Font font=new Font("Monospaced",Font.BOLD,32);//设置字体格式和大小
 	     titleLabel.setFont(font);
 		//"<font color='red' size='24'>浙江工商大学图书馆管理系统</font>"
@@ -127,6 +129,13 @@ public class LibraryManagerSystem {
 		
 		
 		frame.getContentPane().add(contentPanel,BorderLayout.CENTER);
+		
+		
+
+        
+		
+
 	}
+	
 
 }

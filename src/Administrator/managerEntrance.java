@@ -39,7 +39,7 @@ public class managerEntrance {
 	 */
 	public managerEntrance() {
 		frame = new JFrame();
-		frame.setTitle("\u7BA1\u7406\u5458\u767B\u5F55");
+		frame.setTitle("π‹¿Ì‘±µ«¬º");
 		frame.setBounds(100, 100, 528, 348);
 		frame.setVisible(true);
 		frame.setResizable(false);
