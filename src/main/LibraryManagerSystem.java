@@ -83,9 +83,9 @@ public class LibraryManagerSystem {
 		contentPanel.setBackground(java.awt.Color.LIGHT_GRAY);
 		contentPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		contentPanel.setLayout(null);
-//		frame.setContentPane(contentPanel);
+		//frame.setContentPane(contentPanel);
 
-	//	JLabel titleLabel = new JLabel("浙江工商大学图书馆管理系统");
+		//JLabel titleLabel = new JLabel("浙江工商大学图书馆管理系统");
 		 JLabel titleLabel = new JLabel("\u90AE\u5C40\u62A5\u520A\u7BA1\u7406\u7CFB\u7EDF");
 	     Font font=new Font("Monospaced",Font.BOLD,32);//设置字体格式和大小
 	     titleLabel.setFont(font);
@@ -97,6 +97,8 @@ public class LibraryManagerSystem {
 		titleLabel.setFont(new Font("微软雅黑", Font.PLAIN, 25));
 		titleLabel.setBounds(53, 24, 329, 50);
 		contentPanel.add(titleLabel);
+		
+		
 //管理员
 		JButton managerButton = new JButton("管理员入口");
 		managerButton.setBackground(Color.PINK);
@@ -125,15 +127,8 @@ public class LibraryManagerSystem {
 		readerButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		readerButton.setBounds(131, 175, 200, 50);
 		contentPanel.add(readerButton);
-		
-		
-		
-		frame.getContentPane().add(contentPanel,BorderLayout.CENTER);
-		
-		
 
-        
-		
+		frame.getContentPane().add(contentPanel,BorderLayout.CENTER);
 
 	}
 	

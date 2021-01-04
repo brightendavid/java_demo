@@ -635,7 +635,7 @@ public class DBUtils {
 			int result3 = st.executeUpdate();*/
 			//娣诲姞鏁版嵁   浼氭湁涓�鐐归棶棰�
 			//String sql1 = "insert into borrow_history(reader_number, isbn, borrow_time,return_time) " + "values (?,		 ?,?,   now())";
-			String sql2 = "insert into borrow_history(reader_number,isbn,borrow_time) select reader_number, isbn, borrow_time from borrow where reader_number = ? and isbn = ?";
+			String sql2 = "insert into borrow_history(reader_number,isbn,borrow_time) (select reader_number, isbn, borrow_time from borrow where reader_number = ? and isbn = ?)";
 			st = conn.prepareStatement(sql2);
 			st.setInt(1, number);
 			st.setString(2, isbn);
@@ -648,7 +648,9 @@ public class DBUtils {
 			st.setString(2, isbn);
 			int result = st.executeUpdate();
 			
-			String sql3 = "update borrow_history set return_time = now() where reader_number = ? and isbn = ?";
+			
+			//String sql3 = "update borrow_history set return_time = now() where reader_number = ? and isbn = ? ";
+			String sql3 = "update borrow_history set return_time = now() where reader_number = ? and isbn = ?  order by id desc limit 1";
 			st = conn.prepareStatement(sql3);
 			st.setInt(1, number);
 			st.setString(2, isbn);
