@@ -22,7 +22,7 @@ public class ReaderPasswordModifier {
 	private final JDialog dialog = new JDialog();
 	private final JPanel contentPanel = new JPanel();
 	private final JPanel infoPanel = new JPanel();
-	private final JLabel oldPasswordLabel = new JLabel("原密码：");
+	private final JLabel oldPasswordLabel = new JLabel("原密码：");//密码是varchar类型
 	private final JPasswordField oldPasswordTextField = new JPasswordField();
 	private final JLabel newPasswordLabel = new JLabel("新密码：");
 	private final JPasswordField newPasswordTextField = new JPasswordField();

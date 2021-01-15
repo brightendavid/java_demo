@@ -65,7 +65,7 @@ public class LibraryManagerSystem {
 		
 		
 //界面设计开始界面
-		frame = new JFrame("浙江工商大学图书馆管理系统");//窗口
+		frame = new JFrame("浙江工商大学图报刊馆管理系统");//窗口
 		frame.setTitle("\u90AE\u5C40\u62A5\u520A\u7BA1\u7406\u7CFB\u7EDF");
 		frame.setAlwaysOnTop(true);
 		frame.setBackground(new java.awt.Color(64, 64, 64));
@@ -85,11 +85,11 @@ public class LibraryManagerSystem {
 		contentPanel.setLayout(null);
 		//frame.setContentPane(contentPanel);
 
-		//JLabel titleLabel = new JLabel("浙江工商大学图书馆管理系统");
+		//JLabel titleLabel = new JLabel("浙江工商大学图报刊馆管理系统");
 		 JLabel titleLabel = new JLabel("\u90AE\u5C40\u62A5\u520A\u7BA1\u7406\u7CFB\u7EDF");
 	     Font font=new Font("Monospaced",Font.BOLD,32);//设置字体格式和大小
 	     titleLabel.setFont(font);
-		//"<font color='red' size='24'>浙江工商大学图书馆管理系统</font>"
+		//"<font color='red' size='24'>浙江工商大学图报刊馆管理系统</font>"
 		 /*JLabel label = new JLabel("文字");
 	        Font font=new Font("Monospaced",Font.BOLD,32);//设置字体格式和大小
 	        label.setForeground(Color.RED);//设置前景色*/

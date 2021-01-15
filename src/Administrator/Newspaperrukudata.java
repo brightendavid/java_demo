@@ -37,7 +37,7 @@ public class Newspaperrukudata {
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setBounds(100, 100, 487, 451);
 			frame.setVisible(true);
-			//frame.setUndecorated(true);	//隐藏标题栏  会出现不明问题
+			//frame.setUndecorated(true);	//隐藏标题栏  会出现不明问题   运行时会忽略
 			contentPane = new JPanel();
 			contentPane.setBackground(SystemColor.activeCaption);
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,6 +51,7 @@ public class Newspaperrukudata {
 			nameTextField = new JTextField();
 			nameTextField.setColumns(10);
 			nameTextField.setBounds(190, 26, 155, 21);
+			nameTextField.setOpaque(false);  
 			contentPane.add(nameTextField);
 
 			JLabel pressLabel = new JLabel("报刊出版社：");
@@ -60,6 +61,7 @@ public class Newspaperrukudata {
 			pressTextField = new JTextField();
 			pressTextField.setColumns(10);
 			pressTextField.setBounds(190, 66, 155, 21);
+			pressTextField.setOpaque(false);  
 			contentPane.add(pressTextField);
 
 			JLabel PubTimeLabel = new JLabel("报刊出版时间：");
@@ -72,12 +74,14 @@ public class Newspaperrukudata {
 			
 			authortextField = new JTextField();
 			authortextField.setBounds(186, 216, 159, 24);
+			authortextField.setOpaque(false);  
 			contentPane.add(authortextField);
 			authortextField.setColumns(10);
 			
 			PubTimeTextField = new JTextField();
 			PubTimeTextField.setColumns(10);
 			PubTimeTextField.setBounds(190, 102, 155, 21);
+			PubTimeTextField.setOpaque(false);  
 			contentPane.add(PubTimeTextField);
 
 			JLabel totalLabel = new JLabel("报刊数量：");
@@ -97,6 +101,7 @@ public class Newspaperrukudata {
 			priceTextField = new JTextField();
 			priceTextField.setColumns(10);
 			priceTextField.setBounds(190, 182, 155, 21);
+			priceTextField.setOpaque(false);  
 			contentPane.add(priceTextField);
 
 		
@@ -145,6 +150,8 @@ public class Newspaperrukudata {
 						nameTextField.setText("");
 						return;
 					}
+					
+					
 					if (DBUtils.registerNEWS( name, press, PubTime,  total2, price2,author)) {//再次修改完成
 						JOptionPane.showMessageDialog(null, "添加成功！", "通知", JOptionPane.INFORMATION_MESSAGE);
 						frame.dispose();
@@ -167,6 +174,7 @@ public class Newspaperrukudata {
 			});
 			cancleButton.setBounds(302, 339, 123, 40);
 			contentPane.add(cancleButton);
+			//frame.setUndecorated(true);	//隐藏标题栏  会出现不明问题
 			
 
 		}

@@ -100,7 +100,7 @@ public class managerDetail {
 	returnButton.setBounds(241, 336, 141, 47);
 	contentPane.add(returnButton);
 //此处是邮局管理系统不需要使用的功能
-	/*bookReturnButton = new JButton("图书归还");
+	/*bookReturnButton = new JButton("报刊归还");
 	bookReturnButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			contentPane.remove(bookBorrowPanel);

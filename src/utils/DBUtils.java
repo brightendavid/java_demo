@@ -244,6 +244,7 @@ public class DBUtils {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
+		
 
 		try {
 			conn = JDBCUtils.getConnection();
@@ -273,7 +274,12 @@ public class DBUtils {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-
+		
+		for (int i = 0; i < publish_Time.length(); i++) {
+			if(publish_Time.charAt(i)>'9'||publish_Time.charAt(i)<'0'){
+				return false;
+			}
+		}
 		try {
 			conn = JDBCUtils.getConnection();
 
@@ -590,8 +596,7 @@ public class DBUtils {
 		try {
 			conn = JDBCUtils.getConnection();
 
-			String sql = "select book.name, book.isbn, book_writer, publish_press, publish_time, borrow_time from reader, borrow, book_view2"
-					+ "WHERE reader.number = borrow.reader_number AND book.isbn = borrow.isbn AND reader.number = ? and book.name like ?";
+			String sql = "select name,isbn,book_writer, publish_press,publish_time,borrow_time from new where number = ? and name like ?";//and book.name like ?
 			st = conn.prepareStatement(sql);
 			st.setInt(1, number);
 			st.setString(2, "%" + bookName + "%");

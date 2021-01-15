@@ -77,7 +77,7 @@ public class ReaderDetail {
 		returnButton.setBounds(288, 320, 120, 50);
 		contentPane.add(returnButton);
 //此处是邮局管理系统不需要使用的功能  ，我觉得还是需要的，表示报刊退订
-		bookReturnButton = new JButton("图书归还");
+		bookReturnButton = new JButton("\u62A5\u520A\u9000\u8BA2");
 		bookReturnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.remove(bookBorrowPanel);

@@ -44,7 +44,7 @@ public class Newspaper_Ruku extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String bookName = bookNameTextField.getText();
 				if (bookName.equals("")) {
-					JOptionPane.showMessageDialog(null, "请输入书名或书名一部分", "提示", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "请输入报刊名或报刊名一部分", "提示", JOptionPane.PLAIN_MESSAGE);
 					return;
 				}
 				Vector<Vector<String>> data = DBUtils.getBorrowedBookInfos(ReaderEntrance.readerNumber, bookName);

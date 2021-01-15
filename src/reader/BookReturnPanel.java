@@ -29,7 +29,7 @@ public class BookReturnPanel extends JPanel {
 		add(bookNameTextField);
 		bookNameTextField.setColumns(10);
 
-		JLabel bookNameLabel = new JLabel("请输入书名：");
+		JLabel bookNameLabel = new JLabel("请输入报刊名：");
 		bookNameLabel.setBounds(10, 37, 78, 15);
 		add(bookNameLabel);
 
@@ -38,11 +38,11 @@ public class BookReturnPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String bookName = bookNameTextField.getText();
 				if (bookName.equals("")) {
-					JOptionPane.showMessageDialog(null, "请输入书名或书名一部分", "提示", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "请输入报刊名或报刊名一部分", "提示", JOptionPane.PLAIN_MESSAGE);
 					return;
 				}
 				Vector<Vector<String>> data = DBUtils.getBorrowedBookInfos(ReaderEntrance.readerNumber, bookName);
-				table.setModel(new BookTableModel(data));
+				table.setModel(new NewspaperBorrowedTableModel(data));
 			}
 		});
 		queryButton.setBounds(218, 33, 93, 23);
@@ -60,7 +60,7 @@ public class BookReturnPanel extends JPanel {
 		refreshButton.setBounds(333, 33, 93, 23);
 		add(refreshButton);
 
-		JButton borrowButton = new JButton("归还");
+		JButton borrowButton = new JButton("\u505C\u7528");
 		borrowButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int rowNum = table.getSelectedRow();

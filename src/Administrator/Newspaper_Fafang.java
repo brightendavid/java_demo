@@ -37,7 +37,7 @@ public class Newspaper_Fafang extends JPanel{
 		JButton button = new JButton("解除此订阅");
 		button.setEnabled(false);
 		
-		JLabel bookNameLabel = new JLabel("请输入书名：");
+		JLabel bookNameLabel = new JLabel("请输入报刊名：");
 		bookNameLabel.setBounds(10, 36, 106, 18);
 		add(bookNameLabel);
 
@@ -46,7 +46,7 @@ public class Newspaper_Fafang extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				String bookName = bookNameTextField.getText();
 				if (bookName.equals("")) {
-					JOptionPane.showMessageDialog(null, "请输入书名或书名一部分", "提示", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "请输入报刊名或报刊名一部分", "提示", JOptionPane.PLAIN_MESSAGE);
 					return;
 				}
 				Vector<Vector<String>> data = DBUtils.getBookInfo(bookName);
@@ -83,10 +83,10 @@ public class Newspaper_Fafang extends JPanel{
 						String isbn = (String) table.getValueAt(rowNum, 1);
 						String remain = (String) table.getValueAt(rowNum, 6);
 						if (remain.equals("0")) {
-							JOptionPane.showMessageDialog(null, "当前书籍已全部借出", "提示", JOptionPane.PLAIN_MESSAGE);
+							JOptionPane.showMessageDialog(null, "当前报刊籍已全部借出", "提示", JOptionPane.PLAIN_MESSAGE);
 						} else {
 							if (DBUtils.verifyBorrow(readerNumber, isbn)) {
-								JOptionPane.showMessageDialog(null, "借阅失败，已借阅该书", "提示", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "借阅失败，已借阅该报刊", "提示", JOptionPane.PLAIN_MESSAGE);
 								return;
 							}
 

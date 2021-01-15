@@ -8,7 +8,7 @@ import utils.DBUtils;
 
 public class NewspaperBorrowedTableModel extends AbstractTableModel {
 
-	private static String[] columnName = { "书名", "书号", "作者", "出版社", "出版时间", "借阅时间" };
+	private static String[] columnName = { "报刊名", "报刊号", "作者", "出版社", "出版时间", "借阅时间" };
 	private static Vector<Vector<String>> data;
 
 	@Override

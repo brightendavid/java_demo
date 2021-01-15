@@ -6,7 +6,7 @@ public class ReaderborrowModer extends AbstractTableModel {
 	
 //这是另外一张表
 	
-	private static String[] columnName = { "编号", "书号", "借出时间", "应还时间"};
+	private static String[] columnName = { "编号", "报刊号", "借出时间", "应还时间"};
 	private static Vector<Vector<String>> data;
 
 	@Override
